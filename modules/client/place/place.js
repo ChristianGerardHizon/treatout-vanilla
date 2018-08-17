@@ -1,6 +1,7 @@
 console.log(`Loaded Place`);
 
 let place = {};
+const apiKey = `AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k`
 var googledirectionsDisplay;
 var googledirectionsService;
 
@@ -9,28 +10,56 @@ function getAllUrlParams() {
   return search.get("place");
 }
 
+function docid( name ){
+  return document.getElementById(name)
+}
+
+function formatImages() {
+  place.photos.map( image => {
+    let imageUri = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image.photo_reference}&key=${apiKey}`
+    docid('imageReference').innerHTML += `<img src='${imageUri}' >`
+  })
+}
+
+function formatReviews(){
+  place.reviews.map( review => {
+    console.log( review )
+    docid('reviews').innerHTML += 
+    `
+    <span>
+      <h3>${review.author_name}</h3>
+      <span>${review.relative_time_description}</span>
+      <span>${review.rating}</span>
+      <p>${review.text}</p>
+    </span>
+    <br/>
+    `
+  })
+}
+
 function setDetails() {
-  document.getElementById("title").innerHTML = place.name;
-  document.getElementById("description").innerHTML = place.adr_address;
+  docid('title').innerHTML = place.name;
+  docid('description').innerHTML = place.adr_address
+  docid('phoneNum').innerHTML = place.international_phone_number
+  docid('avail').innerHTML = (place.opening_hours.open_now) ? 'OPEN' : 'CLOSED'
+  formatImages()
+  formatReviews()
 }
 
 function initMap() {
-  console.log(`initializing map`);
+  console.log(`Initializing map`);
   googledirectionsDisplay = new google.maps.DirectionsRenderer();
   googledirectionsService = new google.maps.DirectionsService();
   var map = new google.maps.Map(document.getElementById("map"));
   googledirectionsDisplay.setMap(map);
   googledirectionsDisplay.setPanel(document.getElementById("right-panel"));
 
-  // var control = document.getElementById('floating-panel');
-  // control.style.display = 'block';
-  // map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
   calculateAndDisplayRoute(googledirectionsService, googledirectionsDisplay);
 }
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function showPosition(position) {
-      console.log(`Current Postion`, position);
+      // console.log(`Current Postion`, position);
       coords = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
@@ -38,7 +67,7 @@ function getLocation() {
       calculateAndDisplayRoute(
         googledirectionsService,
         googledirectionsDisplay,
-        coordsZ
+        coords
       );
     });
   } else {
@@ -52,11 +81,11 @@ function calculateAndDisplayRoute(
   userPostion = null
 ) {
 
-  if (place.geometry.location && userPostion) {
-    console.log(`Current Place`, place);
+  if (place && userPostion) {
+    // console.log(`Current Place`, place);
     var start = userPostion;
     var end = place.geometry.location;
-    console.log(`Start`, start, `| END`, end);
+    // console.log(`Start`, start, `| END`, end);
     try {
       directionsService.route(
         {
@@ -66,7 +95,7 @@ function calculateAndDisplayRoute(
         },
         function(response, status) {
           if (status === "OK") {
-            console.log(`Response`, response);
+            // console.log(`Response`, response);
             directionsDisplay.setDirections(response);
           } else {
             window.alert("Directions request failed due to " + status);
@@ -74,8 +103,10 @@ function calculateAndDisplayRoute(
         }
       );
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
+  }else{
+    console.error('Missing Parameters')
   }
 }
 
@@ -90,7 +121,8 @@ function getData(url) {
         console.log(`Req`, response);
         place = response;
         setDetails();
-        getLocation();
+        // getLocation();
+        // initMap()
       } else if (xmlhttp.status == 400) {
         alert("There was an error 400");
       } else {
