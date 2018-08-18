@@ -4,6 +4,13 @@ $module = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
 ?>
 <link rel="stylesheet" type="text/css" href="modules/client/places/places.css">
 
+		<!-- Header -->
+    <section id="main" class="wrapper nonframeworkstuff">
+					<div class="inner">
+							<div id="map"></div>
+					</div>
+			</section>
+
 <button onclick="view('tourist+spot','bacolod')"> Tourist Spots </button>
 <button onclick="view('restaurants','bacolod')"> Restaurants </button>
 

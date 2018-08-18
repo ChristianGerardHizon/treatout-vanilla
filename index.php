@@ -14,27 +14,38 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
         <meta name="viewport" content="initial-scale=1.0">
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/main.css">
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="index.js"></script>
     </head>
 
-    <body>
-        <!-- Header -->
-        <section>
-            <a href="">Treatout</a>
-            <ul>
+    <body class="is-nonframework-preload">
+		<!-- Header -->
+        <header id="header">
+            <a class="logo" href="index.php">Treatout</a>
+            <nav>
+                <a href="#menu">Menu</a>
+            </nav>
+        </header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
                 <li> <a href="index.php">Home </a></li>
                 <li> <a href="index.php?mod=about-us">About Us</a></li>
                 <li> <a href="index.php?mod=contact-us">Contact Us</a> </li>
                 <li> <a href="index.php?mod=places">Places</a> </li>
-            </ul>
-        </section>    
+				</ul>
+			</nav>
         <!-- Body  -->
         <section id="mainContainer">
         <?php
             switch($module){
                 case '':
                     require_once 'modules/client/home/home.php';
+                    break;
+                case 'search':
+                    require_once 'modules/client/search/search.php';
                     break;
                 case 'about-us':
                     require_once 'modules/client/about-us/about-us.php';
@@ -55,5 +66,10 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
             }
         ?>
         </section>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
     </body>
 </html>

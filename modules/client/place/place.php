@@ -8,6 +8,7 @@
     <p id="rating"></p>
     <button>Get Directions</button>
     <br/>
+    <h2>Gallery</h2>
     <span id="imageReference"></span>
     <br/>
     <!-- Reviews -->

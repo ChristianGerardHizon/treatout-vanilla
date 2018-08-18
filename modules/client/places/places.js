@@ -24,7 +24,7 @@ function getData(url) {
 
 function getGmapData(url) {
   axios.get(url).then(function(response) {
-    const results = response.data.results
+    const results = response.data.results;
     console.log(results);
     const container = document.getElementById("placeLists");
     results.map(function(place) {
@@ -32,7 +32,7 @@ function getGmapData(url) {
                        <div class="cardContent">
                            <h5>${place.name}</h5>
                            <p>${place.rating}</p>
-                           <p>${place.address}</p>
+                           <p>${place.formatted_address}</p>
                            <a href="index.php?mod=places&place=${
                              place.place_id
                            }">Visit</a>
@@ -58,5 +58,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
   document.getElementById("placeLists").innerHTML = "";
   // Get Data
   //   getData(`${SERVER_URL}/places`);
-  view('Restaurant', 'bacolod')
+  view("Restaurant", "bacolod");
 });
