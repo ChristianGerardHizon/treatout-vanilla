@@ -34,7 +34,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                 <li> <a href="index.php">Home </a></li>
                 <li> <a href="index.php?mod=about-us">About Us</a></li>
                 <li> <a href="index.php?mod=contact-us">Contact Us</a> </li>
-                <li> <a href="index.php?mod=places&service=tourist">Tourist Attraction</a> </li>
+                <li> <a href="index.php?mod=places&service=tourist+spot">Tourist Spots</a> </li>
                 <li> <a href="index.php?mod=places&service=restaurant">Restaurant</a> </li>
 				</ul>
 			</nav>
