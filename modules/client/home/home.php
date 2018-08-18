@@ -28,7 +28,7 @@
 						<section>
 							<div class="content">
 								<header>
-									<a href="index.php?mod=places&service=tourist" class="icon fa-paper-plane-o"><span class="label">Icon</span></a>
+									<a href="index.php?mod=places&service=tourist+spot" class="icon fa-paper-plane-o"><span class="label">Icon</span></a>
 									<h3>Tourist Attractions</h3>
 								</header>
 								<p>Its a bird! Its a Plane! No it's a Famous Tourist Attraction. Let me show you how to get there</p>
