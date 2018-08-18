@@ -37,9 +37,19 @@ function formatReviews(){
   })
 }
 
+function formatRating( count ){
+  if(count >= 5) return '★★★★★'
+  if(count >= 4) return '★★★★☆'
+  if(count >= 3) return '★★★☆☆'
+  if(count >= 2) return '★★☆☆☆'
+  if(count >= 1) return '★☆☆☆☆'
+  if(count >= 0) return '☆☆☆☆☆'
+}
+
 function setDetails() {
   docid('title').innerHTML = place.name;
   docid('description').innerHTML = place.adr_address
+  docid('rating').innerHTML = formatRating( place.rating)
   docid('phoneNum').innerHTML = place.international_phone_number
   docid('avail').innerHTML = (place.opening_hours.open_now) ? 'OPEN' : 'CLOSED'
   formatImages()
@@ -127,5 +137,5 @@ function getData(uri) {
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  getData( `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${getAllUrlParams()}&key=AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k` );
+  getData( `${CORS_FIX}https://maps.googleapis.com/maps/api/place/details/json?placeid=${getAllUrlParams()}&key=AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k` );
 });

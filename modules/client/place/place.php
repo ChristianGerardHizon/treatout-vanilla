@@ -1,10 +1,10 @@
 <link rel="stylesheet" type="text/css" href="modules/client/place/place.css">
 
 
-    <h2 id="title"> Title </h2>
-    <p id="description"> Something to describe here </p>
-    <p id="phoneNum" > Phone Number </p>
-    <span id="avail"> CLOSED </span>
+    <h2 id="title"></h2>
+    <p id="description"></p>
+    <p id="phoneNum" ></p>
+    <span id="avail"></span>
     <p id="rating"></p>
     <button>Get Directions</button>
     <br/>
