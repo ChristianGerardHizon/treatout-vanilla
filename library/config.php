@@ -1,6 +1,8 @@
 <?php
-session_start();
-define('DB_SERVER','localhost');
-define('DB_USERNAME','root');
-define('DB_PASSWORD','');
-define('DB_DATABASE','db_treatout');
+
+$connection = new PDO('mysql:host=localhost;dbname=treatout','root','');
+
+date_default_timezone_set('Asia/Manila');
+
+
+?>

@@ -1,7 +1,7 @@
 console.log(`Loaded Place`);
 
 let place = {};
-const apiKey = `AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k`
+const apiKey = `AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k`;
 var googledirectionsDisplay;
 var googledirectionsService;
 
@@ -10,50 +10,53 @@ function getAllUrlParams() {
   return search.get("place");
 }
 
-function docid( name ){
-  return document.getElementById(name)
+function docid(name) {
+  return document.getElementById(name);
 }
 
 function formatImages() {
-  place.photos.map( image => {
-    let imageUri = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${image.photo_reference}&key=${apiKey}`
-    docid('imageReference').innerHTML += `<img src='${imageUri}' >`
-  })
+  place.photos.map(image => {
+    let imageUri = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${
+      image.photo_reference
+    }&key=${apiKey}`;
+    docid("imageReference").innerHTML += `<img src='${imageUri}'>`;
+  });
 }
 
-function formatReviews(){
-  place.reviews.map( review => {
+function formatRating(count) {
+  if (count >= 5) return "★★★★★";
+  if (count >= 4) return "★★★★☆";
+  if (count >= 3) return "★★★☆☆";
+  if (count >= 2) return "★★☆☆☆";
+  if (count >= 1) return "★☆☆☆☆";
+  if (count >= 0) return "☆☆☆☆☆";
+}
+
+function formatReviews() {
+  place.reviews.map(review => {
     // console.log( review )
-    docid('reviews').innerHTML += 
-    `
+    docid("reviews").innerHTML += `
     <span>
-      <h3>${review.author_name}</h3>
-      <span>${review.relative_time_description}</span>
-      <span>${review.rating}</span>
-      <p>${review.text}</p>
+      <h3 style="display:inline;"> <b>${review.author_name}</b></h3> - <i>${formatRating(review.rating)}</i>
+      <br/>
+      <br/>
+      <blockquote>${review.text}</blockquote>
+      <sup style="float:right">${review.relative_time_description}</sup>
     </span>
     <br/>
-    `
-  })
-}
-
-function formatRating( count ){
-  if(count >= 5) return '★★★★★'
-  if(count >= 4) return '★★★★☆'
-  if(count >= 3) return '★★★☆☆'
-  if(count >= 2) return '★★☆☆☆'
-  if(count >= 1) return '★☆☆☆☆'
-  if(count >= 0) return '☆☆☆☆☆'
+    <br/>
+    `;
+  });
 }
 
 function setDetails() {
-  docid('title').innerHTML = place.name;
-  docid('description').innerHTML = place.adr_address
-  docid('rating').innerHTML = formatRating( place.rating)
-  docid('phoneNum').innerHTML = place.international_phone_number
-  docid('avail').innerHTML = (place.opening_hours.open_now) ? 'OPEN' : 'CLOSED'
-  formatImages()
-  formatReviews()
+  docid("title").innerHTML = place.name;
+  docid("description").innerHTML = place.adr_address;
+  docid("rating").innerHTML = formatRating(place.rating);
+  docid("phoneNum").innerHTML = place.international_phone_number;
+  docid("avail").innerHTML = place.opening_hours.open_now ? "OPEN" : "CLOSED";
+  formatImages();
+  formatReviews();
 }
 
 function initMap() {
@@ -90,7 +93,6 @@ function calculateAndDisplayRoute(
   directionsDisplay,
   userPostion = null
 ) {
-
   if (place && userPostion) {
     // console.log(`Current Place`, place);
     var start = userPostion;
@@ -115,27 +117,32 @@ function calculateAndDisplayRoute(
     } catch (e) {
       console.error(e);
     }
-  }else{
-    console.error('Missing Parameters')
+  } else {
+    console.error("Missing Parameters");
   }
 }
 
 function getData(uri) {
-  console.log( uri )
+  console.log(uri);
   const params = {
     headers: {
-      "Content-type":'application/json'
+      "Content-type": "application/json"
     },
-    dataType :  "text",
+    dataType: "text",
     crossdomain: true
-  }
-  axios.get(uri,params).then(function(response) {
-    place = response.data.result
-    console.log( place )
-    setDetails();
-  }).catch( e => console.error(e.message))
+  };
+  axios
+    .get(uri, params)
+    .then(function(response) {
+      place = response.data.result;
+      console.log(place);
+      setDetails();
+    })
+    .catch(e => console.error(e.message));
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  getData( `${CORS_FIX}https://maps.googleapis.com/maps/api/place/details/json?placeid=${getAllUrlParams()}&key=AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k` );
+  getData(
+    `${CORS_FIX}https://maps.googleapis.com/maps/api/place/details/json?placeid=${getAllUrlParams()}&key=AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k`
+  );
 });

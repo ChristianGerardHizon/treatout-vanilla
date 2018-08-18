@@ -1,17 +1,19 @@
 <?php
 $module = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
+$service = (isset($_GET['service']) && $_GET['service'] != '') ? $_GET['service'] : '';
+
+include('functions.php'); //diri lng butong 
 // echo $module
 ?>
 <link rel="stylesheet" type="text/css" href="modules/client/places/places.css">
 
 			<div id="heading" >
-				<h1> Tourist Attractions</h1>
+				<h1> <?php echo $service ?></h1>
 			</div>
 
-
+<div> <?php $places = allplaces(); ?> </div>
 				<div class="inner">
           <div class="highlights" id="placeLists">
-
           </div>
 				</div>
 

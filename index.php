@@ -1,8 +1,8 @@
 <?php   
 include 'library/config.php';
-include 'classes/users.php';
+// include 'classes/users.php';
 
-$user = new User();
+// $user = new User();
 
 $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod'] : '';
 $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
@@ -34,7 +34,8 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                 <li> <a href="index.php">Home </a></li>
                 <li> <a href="index.php?mod=about-us">About Us</a></li>
                 <li> <a href="index.php?mod=contact-us">Contact Us</a> </li>
-                <li> <a href="index.php?mod=places">Places</a> </li>
+                <li> <a href="index.php?mod=places&service=tourist">Tourist Attraction</a> </li>
+                <li> <a href="index.php?mod=places&service=restaurant">Restaurant</a> </li>
 				</ul>
 			</nav>
         <!-- Body  -->
