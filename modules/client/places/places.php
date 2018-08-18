@@ -4,26 +4,16 @@ $module = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
 ?>
 <link rel="stylesheet" type="text/css" href="modules/client/places/places.css">
 
-		<!-- Header -->
-    <section id="main" class="wrapper nonframeworkstuff">
-					<div class="inner">
-							<div id="map"></div>
-					</div>
-			</section>
+			<div id="heading" >
+				<h1> Tourist Attractions</h1>
+			</div>
 
-<button onclick="view('tourist+spot','bacolod')"> Tourist Spots </button>
-<button onclick="view('restaurants','bacolod')"> Restaurants </button>
 
-<div id="placeLists" class="section group">
-	<!-- <div  class="col span_1_of_5 card">
-	  <div class="cardContent">
-      <h5>Sample title of the place</h5>
-      <p>★★★★★</p>
-      <p>This is a sample Address</p>
-      <a href="#">Visit</a>
-    </div>
-  </div> -->
-</div>
+				<div class="inner">
+          <div class="highlights" id="placeLists">
+
+          </div>
+				</div>
 
 <div id="buttons">
 </div>
