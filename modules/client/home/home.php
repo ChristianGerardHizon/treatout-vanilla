@@ -37,7 +37,7 @@
 						<section>
 							<div class="content">
 								<header>
-									<a href="#" class="icon fa-cutlery"><span class="label">Icon</span></a>
+									<a href="index.php?mod=places&service=restaurant" class="icon fa-cutlery"><span class="label">Icon</span></a>
 									<h3>Restaurants</h3>
 								</header>
 								<p>Hungry? or Craving Somethin? Treatout will point the way </p>

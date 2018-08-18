@@ -54,7 +54,7 @@ function getData(url) {
       //            </div>`;
       container.innerHTML += 
       `<section>
-        <div class="content">
+        <div class="content card">
           <header>
             <h3>${place.name}</h3>
           </header>
@@ -85,7 +85,7 @@ function getGmapData(url) {
     results.map(function(place) {
       container.innerHTML += 
       `<section>
-        <div class="content">
+        <div class="content card" onclick="goToPage('index.php?mod=places&place=${place.place_id}')">
           <header>
             <h3>${place.name}</h3>
           </header>
@@ -101,6 +101,10 @@ function getGmapData(url) {
       next_page = null
     }
   });
+}
+
+function goToPage( str ) {
+  location = str 
 }
 
 function view(query, place, nextpage ) {

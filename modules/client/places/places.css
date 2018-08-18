@@ -1,7 +1,7 @@
-/* .card {
-    background-color: grey;
+.card {
+	cursor: pointer;
 }
-.cardContent {
+/* .cardContent {
     margin: 20px;
 } */
 
