@@ -4,6 +4,9 @@ $module = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
 ?>
 <link rel="stylesheet" type="text/css" href="modules/client/places/places.css">
 
+<button onclick="view('tourist+spot','bacolod')"> Tourist Spots </button>
+<button onclick="view('restaurants','bacolod')"> Restaurants </button>
+
 <div id="placeLists" class="section group">
 	<!-- <div  class="col span_1_of_5 card">
 	  <div class="cardContent">
@@ -19,4 +22,4 @@ $module = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
 </div>
 
 <script src="modules/client/places/places.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k&callback=initMap" async defer></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k&callback=initMap" async defer></script> -->

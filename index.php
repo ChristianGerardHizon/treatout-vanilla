@@ -14,6 +14,8 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
         <meta name="viewport" content="initial-scale=1.0">
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="index.css">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="index.js"></script>
     </head>
 
     <body>
@@ -21,7 +23,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
         <section>
             <a href="">Treatout</a>
             <ul>
-                <li> <a href="">Home </a></li>
+                <li> <a href="index.php">Home </a></li>
                 <li> <a href="index.php?mod=about-us">About Us</a></li>
                 <li> <a href="index.php?mod=contact-us">Contact Us</a> </li>
                 <li> <a href="index.php?mod=places">Places</a> </li>

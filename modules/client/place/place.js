@@ -23,7 +23,7 @@ function formatImages() {
 
 function formatReviews(){
   place.reviews.map( review => {
-    console.log( review )
+    // console.log( review )
     docid('reviews').innerHTML += 
     `
     <span>
@@ -110,33 +110,22 @@ function calculateAndDisplayRoute(
   }
 }
 
-function getData(url) {
-  var xmlhttp = new XMLHttpRequest();
-
-  xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-      // XMLHttpRequest.DONE == 4
-      if (xmlhttp.status == 200) {
-        const response = JSON.parse(xmlhttp.responseText).result;
-        console.log(`Req`, response);
-        place = response;
-        setDetails();
-        // getLocation();
-        // initMap()
-      } else if (xmlhttp.status == 400) {
-        alert("There was an error 400");
-      } else {
-        alert("something else other than 200 was returned");
-      }
-    }
-  };
-
-  xmlhttp.open("GET", url, true);
-  xmlhttp.send();
+function getData(uri) {
+  console.log( uri )
+  const params = {
+    headers: {
+      "Content-type":'application/json'
+    },
+    dataType :  "text",
+    crossdomain: true
+  }
+  axios.get(uri,params).then(function(response) {
+    place = response.data.result
+    console.log( place )
+    setDetails();
+  }).catch( e => console.error(e.message))
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  getData(
-    `https://maps.googleapis.com/maps/api/place/details/json?placeid=${getAllUrlParams()}&key=AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k`
-  );
+  getData( `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${getAllUrlParams()}&key=AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k` );
 });
