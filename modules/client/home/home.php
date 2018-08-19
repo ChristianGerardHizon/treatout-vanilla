@@ -29,7 +29,7 @@
 							<div class="content">
 								<header>
 									<a href="index.php?mod=places&service=tourist+spot" class="icon fa-paper-plane-o"><span class="label">Icon</span></a>
-									<h3>Tourist Attractions</h3>
+									<h3>Tourist Spots</h3>
 								</header>
 								<p>Its a bird! Its a Plane! No it's a Famous Tourist Attraction. Let me show you how to get there</p>
 							</div>
@@ -46,7 +46,7 @@
 						<section>
 							<div class="content">
 								<header>
-									<a href="#" class="icon fa-vcard-o"><span class="label">Icon</span></a>
+									<a href="index.php?mod=contact-us" class="icon fa-vcard-o"><span class="label">Icon</span></a>
 									<h3>Contact Us</h3>
 								</header>
 								<p>Wanna add or change Something? We will make sure your business or favorite spot is here.</p>
@@ -55,7 +55,7 @@
 						<section>
 							<div class="content">
 								<header>
-									<a href="#" class="icon fa-users"><span class="label">Icon</span></a>
+									<a href="index.php?mod=about-us" class="icon fa-users"><span class="label">Icon</span></a>
 									<h3>About Us</h3>
 								</header>
 								<p>Wanna know about us? Really? We will show you a brief but not long history of our site</p>
@@ -64,7 +64,7 @@
 						<section>
 							<div class="content">
 								<header>
-									<a href="#" class="icon fa-floppy-o"><span class="label">Icon</span></a>
+									<a href="index.php?mod=account" class="icon fa-floppy-o"><span class="label">Icon</span></a>
 									<h3>Account</h3>
 								</header>
 								<p>Can't Remember that last place you visited? or just want to save a restaurant or place for that special date? We got you covered</p>

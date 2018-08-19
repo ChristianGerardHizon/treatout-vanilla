@@ -1,3 +1,9 @@
+<?php
+$module = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
+$place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
+
+// echo $module
+?>
 <link rel="stylesheet" type="text/css" href="modules/client/place/place.css">
 
 <section id="main" class="wrapper">
@@ -12,7 +18,7 @@
                 <li id="avail">Felis enim feugiat viverra.</li>
             </ul>
 
-            <a href="#" class="button primary icon fa-map">Get Directions</a>
+            <a href="index.php?mod=directions&place=<?php echo $place ?>" class="button primary icon fa-map">Get Directions</a>
             </div>
         </div>
         <div class="inner">
@@ -35,7 +41,5 @@
 </div>
 
 <script src="modules/client/place/place.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k" async defer></script>
-
 <!-- <div id="right-panel"></div>
 <div id="map"></div> -->

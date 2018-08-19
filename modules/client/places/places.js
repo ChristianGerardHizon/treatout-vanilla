@@ -13,15 +13,26 @@ function findGetParameter(parameterName) {
   return result;
 }
 
-const service = `${findGetParameter('service')}+in`
+const service = `${findGetParameter('service')}`
+const query = `${findGetParameter('query')}`
+
 let next_page = null
 
 document.addEventListener("DOMContentLoaded", function(event) {
   document.getElementById("placeLists").innerHTML = "";
   // Get Data
   //   getData(`${SERVER_URL}/places`);
-  console.log(service)
-  view(service, 'Bacolod', next_page )
+  console.log( service )
+  if( service != 'search'){
+    console.log(service)
+    if( service === 'tourist+spot' || service === 'restaurant') {
+      view(`${service}+in`, 'Bacolod', next_page )
+    }else{
+      document.getElementById("placeLists").innerHTML = `<div class="inner content"><br/><br/><h2> Sorry we are unable to get what you requested for</h2><br/><br/></div>`
+    }
+  }else{
+    view(`${query}`, 'Bacolod', next_page )
+  }  
 });
 
 // Bottom Listener
@@ -37,10 +48,10 @@ window.onscroll = function(ev) {
 
 
 function getData(url) {
+  const container = document.getElementById("placeLists");
   axios.get(url).then(function(response) {
     const results = response.data;
     console.log(results);
-    const container = document.getElementById("placeLists");
     results.map(function(place) {
       // container.innerHTML += `<div  class="col span_1_of_5 card">
       //                <div class="cardContent">
@@ -62,7 +73,10 @@ function getData(url) {
         </div>
       </section>`
     });
-  });
+  }).catch( function(e){
+    console.error(e)
+    contaianer.innerHTML = `<br/><div class="inner content"><h2> Sorry we are unable to get what you requested for</h2></div>`
+  })
 }
 
 // Temp Functions
