@@ -23,7 +23,7 @@ $max = (isset($_GET['max']) && $_GET['max'] != '') ? $_GET['max'] : '';
 	</h1>
 </div>
 <div class="inner">
-	<div class="highlights" id="placeLists">
+	<div class="highlights" id="placeLists">	
 	</div>
 </div>
 

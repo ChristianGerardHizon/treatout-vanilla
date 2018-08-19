@@ -89,7 +89,7 @@ function viewResto() {
 }
 
 function viewTours() {
-  service = "attractions"
+  service = "tourist+spot"
   document.getElementById("placeLists").innerHTML = "";
   view(`${service}+in`, 'Bacolod', next_page )
 }
