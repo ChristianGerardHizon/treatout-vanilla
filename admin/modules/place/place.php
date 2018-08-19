@@ -18,8 +18,8 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                 <li id="avail"></li>
             </ul>
 
-            <a href="index.php?mod=directions&place=<?php echo $place ?>" class="button primary icon fa-map">Find terminal</a>
-            </div>
+            <a href="index.php?mod=route&place=<?php echo $place ?>" class="button primary icon fa-map">Edit Routes</a>    
+        </div>
         </div>
         <div class="inner">
             <div class="content">
