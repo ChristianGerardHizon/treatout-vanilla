@@ -1,5 +1,5 @@
 <?php
-class Places {
+class Transportation {
 
     protected $connection;
 
@@ -10,7 +10,7 @@ class Places {
 
     public function getAll() {
 
-        $query = "SELECT * FROM places";
+        $query = "SELECT * FROM transportation";
 
         $query = $this->connection->prepare($query);
 

@@ -1,8 +1,10 @@
 <?php   
 include 'library/config.php';
-// include 'classes/users.php';
+include 'classes/transportation.php';
+include 'classes/places.php';
 
-// $user = new User();
+$places = new Places($connection);
+$transportation = new Transportation($connection);
 
 $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod'] : '';
 $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
@@ -15,7 +17,6 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="index.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
         <link rel="stylesheet" type="text/css" href="assets/css/main.css">
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="index.js"></script>
