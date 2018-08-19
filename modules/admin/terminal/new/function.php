@@ -1,6 +1,6 @@
 <?php 
 
-	include '../../../library/config.php';
+	include '../../../../library/config.php';
 
 	$query = "SELECT * FROM transportation";
 

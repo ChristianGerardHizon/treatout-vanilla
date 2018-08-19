@@ -14,11 +14,11 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 
             <ul class="alt">
                 <li id="description"></li>
-                <li id="phoneNum">Sagittis adipiscing lorem eleifend.</li>
-                <li id="avail">Felis enim feugiat viverra.</li>
+                <li id="phoneNum"></li>
+                <li id="avail"></li>
             </ul>
 
-            <a href="index.php?mod=directions&place=<?php echo $place ?>" class="button primary icon fa-map">Get Directions</a>
+            <a href="index.php?mod=directions&place=<?php echo $place ?>" class="button primary icon fa-map">Find terminal</a>
             </div>
         </div>
         <div class="inner">
