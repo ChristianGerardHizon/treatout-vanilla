@@ -83,7 +83,7 @@ function view(query, place, nextpage ) {
 }
 
 function viewResto() {
-  service = 'restaurants'
+  service = "restaurants"
   document.getElementById("placeLists").innerHTML = "";
   view(`${service}+in`, 'Bacolod', next_page )
 }
