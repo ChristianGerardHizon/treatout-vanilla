@@ -56,6 +56,9 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
             case 'accounts':
                 require_once 'modules/accounts/accounts.php';
                 break;
+            case 'route':
+            require_once 'modules/place/route/route.php';
+                break;
             default: 
                 require_once 'modules/dashboard/dashboard.php';
                 break;
