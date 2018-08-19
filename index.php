@@ -14,14 +14,12 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
         <meta name="viewport" content="initial-scale=1.0">
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="index.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
-        <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="index.js"></script>
     </head>
 
-    <body class="is-nonframework-preload">
+    <body>
 		<!-- Header -->
         <header id="header">
             <a class="logo" href="index.php">Treatout</a>
@@ -31,15 +29,16 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
         </header>
 
 		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-                <li> <a href="index.php">Home </a></li>
-                <li> <a href="index.php?mod=about-us">About Us</a></li>
-                <li> <a href="index.php?mod=contact-us">Contact Us</a> </li>
-                <li> <a href="index.php?mod=places&service=tourist+spot">Tourist Spots</a> </li>
-                <li> <a href="index.php?mod=places&service=restaurant">Restaurant</a> </li>
-				</ul>
-			</nav>
+        <nav id="menu">
+            <ul class="links">
+            <li> <a href="index.php">Home </a></li>
+            <li> <a href="index.php?mod=about-us">About Us</a></li>
+            <li> <a href="index.php?mod=contact-us">Contact Us</a> </li>
+            <li> <a href="index.php?mod=places&service=tourist+spot">Tourist Spots</a> </li>
+            <li> <a href="index.php?mod=places&service=restaurant">Restaurant</a> </li>
+            <li> <a href="./admin">Admin</a> </li>
+            </ul>
+        </nav>
         <!-- Body  -->
         <section id="mainContainer">
         <?php
