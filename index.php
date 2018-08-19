@@ -14,6 +14,8 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
         <meta name="viewport" content="initial-scale=1.0">
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
         <link rel="stylesheet" type="text/css" href="assets/css/main.css">
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="index.js"></script>
@@ -50,6 +52,9 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                     break;
                 case 'about-us':
                     require_once 'modules/client/about-us/about-us.php';
+                    break;
+                case 'directions':
+                    require_once 'modules/client/directions/directions.php';
                     break;
                 case 'contact-us':
                     require_once 'modules/client/contact-us/contact-us.php';

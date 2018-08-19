@@ -1,17 +1,31 @@
 <?php
 $module = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
 $service = (isset($_GET['service']) && $_GET['service'] != '') ? $_GET['service'] : '';
+
+$min = (isset($_GET['min']) && $_GET['min'] != '') ? $_GET['min'] : '';
+$max = (isset($_GET['max']) && $_GET['max'] != '') ? $_GET['max'] : '';
+
+
 // echo $module
 ?>
 <link rel="stylesheet" type="text/css" href="modules/client/places/places.css">
 
-			<div id="heading" >
-				<h1> <?php echo $service ?></h1>
-			</div>
-		<div class="inner">
-          <div class="highlights" id="placeLists">
-          </div>
-				</div>
+<div id="heading" >
+	<h1> 
+	<?php
+	if( $service == 'tourist spot' || $service == 'restaurant')
+	{
+		echo $service;
+	} else {
+		echo "Search"; 
+	}
+	?>
+	</h1>
+</div>
+<div class="inner">
+	<div class="highlights" id="placeLists">
+	</div>
+</div>
 
 <div id="buttons">
 </div>
