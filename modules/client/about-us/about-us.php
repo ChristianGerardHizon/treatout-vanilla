@@ -18,14 +18,7 @@
             <br/>
             <br/>
             <header class="special">
-            <div class="box">
-                    <p>Felis sagittis eget tempus primis in faucibus vestibulum. Blandit adipiscing eu
-                    felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque
-                    praesent tincidunt felis sagittis eget. tempus euismod. Magna sed etiam ante ipsum
-                    primis in faucibus vestibulum. Blandit adipiscing eu ipsum primis in faucibus
-                    vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu
-                    faucibus lorem ipsum dolor sit amet nullam.</p>
-                </div>
+
             </header>   
             </div>
         </div>
@@ -64,15 +57,7 @@
                             <p>Position</p>
                         </div>
                     </section>
-                    <section>
-                        <div class="content">
-                            <header>
-                                <a class="icon fa-male"><span class="label">Icon</span></a>
-                                <h3>Name</h3>
-                            </header>
-                            <p>Position</p>
-                        </div>
-                    </section>
+  
                 </div>
             </div>
         </div>

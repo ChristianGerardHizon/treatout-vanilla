@@ -89,7 +89,7 @@ function viewResto() {
 }
 
 function viewTours() {
-  service = "tourist+spot"
+  service = "tourist+spots"
   document.getElementById("placeLists").innerHTML = "";
-  view(`${service}+in`, 'Bacolod', next_page )
+  view(`${service}+in`, 'negros+occidental', next_page )
 }

@@ -1,11 +1,10 @@
 <?php
 
 $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod'] : '';
+$sub = (isset($_GET['sub']) && $_GET['sub'] != '') ? $_GET['sub'] : '';
 $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 
 ?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +15,9 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
     <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="index.js"></script>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+
 
 
 </head>
@@ -34,7 +36,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
         <ul class="links">
         <li> <a href="index.php">Dashboard</a></li>
         <li> <a href="index.php?mod=places">Places</a></li>
-        <li> <a href="index.php?mod=accounts">Accounts</a> </li>
+        <li> <a href="index.php?mod=accounts">User Accounts</a> </li>
         </ul>
     </nav>
 
