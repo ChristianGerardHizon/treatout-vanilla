@@ -4,7 +4,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 
 // echo $module
 ?>
-<link rel="stylesheet" type="text/css" href="modules/client/place/place.css">
+<link rel="stylesheet" type="text/css" href="modules/place/place.css">
 
 <section id="main" class="wrapper">
     <div class="inner">
@@ -18,8 +18,8 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                 <li id="avail"></li>
             </ul>
 
-            <a href="index.php?mod=directions&place=<?php echo $place ?>" class="button primary icon fa-map">Find terminal</a>
-            </div>
+            <a href="index.php?mod=route&place=<?php echo $place ?>" class="button primary icon fa-map">Edit Routes</a>    
+        </div>
         </div>
         <div class="inner">
             <div class="content">
@@ -40,6 +40,6 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
     </div>
 </div>
 
-<script src="modules/client/place/place.js"></script>
+<script src="modules/place/place.js"></script>
 <!-- <div id="right-panel"></div>
 <div id="map"></div> -->
