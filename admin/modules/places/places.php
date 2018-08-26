@@ -12,21 +12,18 @@ $max = (isset($_GET['max']) && $_GET['max'] != '') ? $_GET['max'] : '';
 
 <div id="heading" >
 	<h1> 
-	Place List
+	<?php
+	if( $service == 'tourist spot' || $service == 'restaurant')
+	{
+		echo $service;
+	} else {
+		echo "Search"; 
+	}
+	?>
 	</h1>
 </div>
 <div class="inner">
-	<br/>
-	<div class="row">
-		<div class="col-6">
-			<a class="button primary icon fa-map" style="width:100%;" onclick="viewResto()">Restaurants</a>
-		</div>
-		<div class="col-6">
-			<a class="button primary icon fa-map" style="width:100%;" onclick="viewTours()" >Tourist Spots</a>
-		</div>
-	</div>
-
-	<div class="highlights" id="placeLists">
+	<div class="highlights" id="placeLists">	
 	</div>
 </div>
 

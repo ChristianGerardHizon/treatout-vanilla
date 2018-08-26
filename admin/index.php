@@ -35,8 +35,10 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
     <nav id="menu">
         <ul class="links">
         <li> <a href="index.php">Dashboard</a></li>
-        <li> <a href="index.php?mod=places">Places</a></li>
         <li> <a href="index.php?mod=accounts">User Accounts</a> </li>
+        <li> <a href='index.php?mod=places&service=tourist+spot'>Tourist Spots</a> </li>
+        <li> <a href='index.php?mod=places&service=restaurant'>Restaurant</a> </li>
+        <li> <a href='logout.php'>Logout</a> </li>
         </ul>
     </nav>
 
@@ -46,23 +48,40 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
     <?php
         switch($module){
             case '':
+
                 require_once 'modules/dashboard/dashboard.php';
+
                 break;
+
             case 'places':
-                if($place != '' ){
+
+                if ($place != '' ) {
+
                     require_once 'modules/place/place.php';
-                }else {
+
+                } else {
+
                     require_once 'modules/places/places.php';
                 }
+
                 break;
+
             case 'accounts':
+
                 require_once 'modules/accounts/accounts.php';
+
                 break;
+
             case 'route':
+
             require_once 'modules/place/route/route.php';
+
                 break;
+
             default: 
+
                 require_once 'modules/dashboard/dashboard.php';
+
                 break;
         }
         ?>
