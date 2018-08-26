@@ -80,8 +80,7 @@
 					<div class="content">
 						<section>
 							<h3>Treatout</h3>
-							<p>Please take note that treatout available on the island nation of Negros Occidental. While Tourist Attractions are avaialbale on the great city of Bacolod.This is a pure html, css and javascript website for your information no frameworks were harmed
-								during the creation of this site. So keep calm and code. Thanks to stackoverflow for teaching me to do this site. Hey you think you can do better? Really? why rework this site and show me how its done. Im open to suggestions. Treatout will serve you with its best.
+							<p>Please take note that treatout available on the island nation of Negros Occidental. While Tourist Attractions are avaialbale on the great city of Bacolod. Treatout will serve you with its best.
 							</p>
 						</section>
 						<section>
