@@ -11,7 +11,7 @@
 			'longitude_start' => $_POST['longitude_start']
 		];
 
-		$q1 = "INSERT INTO routes(place_id, trans_id, fare_rate_min, fare_rate_max, description, latitude_start, longitude_start) VALUES (:place_id, :trans_id, :fare_rate_min, :fare_rate_max, :description, :latitude_start, :longitude_start)";
+		$q1 = "INSERT INTO routes(place_id, trans_id, fare_rate_min, fare_rate_max, description, latitude, longitude) VALUES (:place_id, :trans_id, :fare_rate_min, :fare_rate_max, :description, :latitude_start, :longitude_start)";
 		
 		$stmt= $connection->prepare($q1);
 		$res = $stmt->execute($data);

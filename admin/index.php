@@ -1,5 +1,11 @@
 <?php
 
+include '../library/config.php';
+include '../classes/places.php';
+
+
+$places = new Places($connection);
+
 $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod'] : '';
 $sub = (isset($_GET['sub']) && $_GET['sub'] != '') ? $_GET['sub'] : '';
 $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
@@ -17,6 +23,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
     <script src="index.js"></script>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
 
 
 
@@ -51,7 +58,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 
                 require_once 'modules/dashboard/dashboard.php';
 
-                break;
+            break;
 
             case 'places':
 
@@ -64,25 +71,25 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                     require_once 'modules/places/places.php';
                 }
 
-                break;
+            break;
 
             case 'accounts':
 
                 require_once 'modules/accounts/accounts.php';
 
-                break;
+            break;
 
-            case 'route':
+            case 'terminal':
 
-            require_once 'modules/place/route/route.php';
+                require_once 'modules/terminals/index.php';
 
-                break;
+            break;
 
             default: 
 
                 require_once 'modules/dashboard/dashboard.php';
 
-                break;
+            break;
         }
         ?>
     
