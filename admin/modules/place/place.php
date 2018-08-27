@@ -3,7 +3,6 @@ $module = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
 $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 $placename = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
 
-// echo $module
 ?>
 <link rel="stylesheet" type="text/css" href="modules/place/place.css">
 
@@ -16,6 +15,9 @@ $placename = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
             <ul class="alt">
                 <li id="description"></li>
                 <li id="phoneNum"></li>
+                <li> Price range: <?php $res = $places->show($place); foreach ($res as $value) {
+                    echo $value->rate_min." - ".$value->rate_max;
+                } ?>  </li>
                 <li id="avail"></li>
             </ul>
 
@@ -28,14 +30,14 @@ $placename = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
 
                     if($res == 0) {
 
-                        echo  '<button type="button" id="btn-add-ann" data-toggle="modal" data-target="#annModal" class="button primary icon fa-map">Add Details</button></h3>';
+                        echo  '<button type="button" id="btn-add" data-toggle="modal" data-target="#annModal" class="button primary icon fa-map">Add Details</button></h3>';
 
 
 
 
                     } else {
 
-                        echo  '<a href="index.php?mod=terminal&place_id'.$place.'&name='.$_GET['name'].'" class="button primary icon fa-map">Edit</a>';
+                        echo  '<button type="button" id="'.$place.'" data-toggle="modal" data-target="#annModal" class="btn-edit button primary icon fa-map">Edit</button></h3>';
                     }
 
             ?>
@@ -63,45 +65,64 @@ $placename = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
     </div>
 </div>
 
-<div id="myModal" class="modal">
- 
-  <div class="modal-content">
-  <div class="modal-header">
-    <span class="close">&times;</span>
-    <h3>Add details</h3>
-  </div>
+<div id="detailsModal" class="modal">
+    <div class="modal-content">
+           <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3>Add details</h3>
+        </div>
 
-  <div class="modal-body">
-        <form method="post" id="user_form" enctype="multipart/form-data">
-            <label>Minimum Rate</label>
-            <input type="number" step="0.00"  name="minrate" id="minrate" class="form-control" />
-            <br>
-            <label>Maximum Rate</label>
-            <input type="number"  step="0.00" name="maxrate" id="maxrate" class="form-control" />
-            <br>
-            <label>Location Type</label>        
-            <select style="width: 50%;" name="type" id="loctype" class="form-control" required>
-                <option>
-                  Tourist Spot
-                </option>
-                <option>
-                   Restaurant
-                </option>                              
-                                
-            </select>
-            <br>            
-        
-  </div>
-
-    <div class="modal-footer">
-        <input type="hidden" name="place_id" id="placeid" value="<?php echo $place; ?>" />
-        <input type="submit" name="action" id="action" value="Add" />
+        <div class="modal-body">
+            <form method="post" id="user_form" enctype="multipart/form-data">
+                    <label>Minimum Rate</label>
+                    <input type="number" step="0.00"  name="minrate" id="minrate" class="form-control" />
+                    <br>
+                    <label>Maximum Rate</label>
+                    <input type="number"  step="0.00" name="maxrate" id="maxrate" class="form-control" />
+                    <br>
+                    <label>Location Type</label>        
+                    <select style="width: 50%;" name="type" id="loctype" class="form-control" required>
+                        <option>
+                          Tourist Spot
+                        </option>
+                        <option>
+                           Restaurant
+                        </option>                              
+                                        
+                    </select>
+                    <br>            
+                
+        </div>
+        <div class="modal-footer">
+            <input type="hidden" name="place_id" id="placeid" value="<?php echo $place; ?>" />
+            <input type="submit" name="action" id="action" value="Add" />
+        </div>
+    </form>
     </div>
-
-</form>
-
 </div>
 
+<div id="editModal" class="modal">
+    <div class="modal-content">
+           <div class="modal-header">
+            <span class="closeedit">&times;</span>
+            <h3>Edit details</h3>
+        </div>
+
+        <div class="modal-body">
+            <form method="post" id="edit_form" enctype="multipart/form-data">
+                    <label>Minimum Rate</label>
+                    <input type="number" step="0.00"  name="minrate" id="minrateedit" class="form-control" />
+                    <br>
+                    <label>Maximum Rate</label>
+                    <input type="number"  step="0.00" name="maxrate" id="maxrateedit" class="form-control" />
+                    <br>
+        </div>
+        <div class="modal-footer">
+            <input type="hidden" name="placeid" id="placeid" value="<?php echo $place; ?>" />
+            <input type="submit" name="action" id="action" value="Submit" />
+        </div>
+    </form>
+    </div>
 </div>
 
 <script src="modules/place/place.js"></script>
@@ -110,12 +131,14 @@ $placename = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
 $(document).ready(function(){
 
     // Get the modal
-var modal = document.getElementById('myModal');
+var modal = document.getElementById('detailsModal');
+var modaledit = document.getElementById('editModal');
 
 // Get the button that opens the modal
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
+var spanedit = document.getElementsByClassName("closeedit")[0];
 
 
 // When the user clicks on <span> (x), close the modal
@@ -123,7 +146,12 @@ span.onclick = function() {
     modal.style.display = "none";
 }
 
-$(document).on('click', '#btn-add-ann', function(event) {
+spanedit.onclick = function() {
+    modaledit.style.display = "none";
+}
+
+
+$(document).on('click', '#btn-add', function(event) {
 
       modal.style.display = "block";
 });
@@ -133,6 +161,12 @@ $(document).on('click', '#btn-add-ann', function(event) {
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
+    }
+}
+
+window.onclick = function(event) {
+    if (event.target == modaledit) {
+        modaledit.style.display = "none";
     }
 }
 
@@ -157,7 +191,6 @@ $(document).on('submit', '#user_form', function(event){
                         $('#user_form')[0].reset();
                          modal.style.display = "none";
                          location.reload();
-                       
                     }
                 });
             }
@@ -166,8 +199,60 @@ $(document).on('submit', '#user_form', function(event){
                 alert("Please fill up required information!");
             }
 });
+
+
+$(document).on('submit', '#edit_form', function(event){
+        event.preventDefault();
+
+        var minrate = $('#minrateedit').val();
+        var maxrate = $('#maxrateedit').val();
+
+            if(minrate != '' && maxrate !='')
+            {
+                $.ajax({
+                    url:"modules/place/update.php",
+                    method:'POST',
+                    data:new FormData(this),
+                    contentType:false,
+                    processData:false,
+                    dataType: 'JSON',
+                    success:function(data)
+                    {
+                        alert(data.msg);
+                        modaledit.style.display = "none";
+                        location.reload();
+                    }
+                });
+            }
+            else
+            {
+                alert("Please fill up required information!");
+            }
+});
+
+
+$(document).on('click', '.btn-edit', function(){
+
+        var placeid = $(this).attr("id");
+        
+        $.ajax({
+            url:"modules/place/getDetails.php",
+            method:'POST',
+            data:{placeid:placeid},
+            dataType:"JSON",
+            success:function(data)
+            {
+                modaledit.style.display = "block";
+                $('#minrateedit').val(data.minrate);
+                $('#maxrateedit').val(data.maxrate);
+        }
+    })
+});
+
+
+
+
+
 });   
 
-</script>
-<!-- <div id="right-panel"></div>
-<div id="map"></div> -->
+</script>   

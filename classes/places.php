@@ -34,4 +34,17 @@ class Places {
         return $count = $query->rowCount();
     }
 
+
+    public function show($id) {
+
+        $query = "SELECT * FROM places WHERE place_id = ?";
+
+        $query = $this->connection->prepare($query);
+
+        $query->execute([$id]);
+
+        return $data =  $query->fetchAll(PDO::FETCH_OBJ);
+
+    }
+
 }

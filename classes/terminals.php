@@ -10,7 +10,7 @@ class Terminals {
 
     public function getTerminalsByPlaceId($id) {
 
-        $query = "SELECT * FROM terminals WHERE place_id = ?";
+        $query = "SELECT * FROM terminals t INNER JOIN transportation tt ON t.trans_id = tt.trans_id WHERE t.place_id = ?";
 
         $query = $this->connection->prepare($query);
 

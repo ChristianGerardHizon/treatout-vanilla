@@ -2863,3 +2863,19 @@ body.is-menu-visible #menu {
     text-decoration: none;
     cursor: pointer;
 }
+
+
+/* The Close Button */
+.closeedit {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closedit:hover,
+.closedit:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

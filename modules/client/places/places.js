@@ -53,16 +53,7 @@ function getData(url) {
     const results = response.data;
     console.log(results);
     results.map(function(place) {
-      // container.innerHTML += `<div  class="col span_1_of_5 card">
-      //                <div class="cardContent">
-      //                    <h5>${place.name}</h5>
-      //                    <p>${place.rating}</p>
-      //                    <p>${place.address}</p>
-      //                    <a href="index.php?mod=places&place=${
-      //                      place.place_id
-      //                    }">Visit</a>
-      //                </div>
-      //            </div>`;
+
       container.innerHTML += 
       `<section>
         <div class="content card">
@@ -99,7 +90,7 @@ function getGmapData(url) {
     results.map(function(place) {
       container.innerHTML += 
       `<section>
-        <div class="content card" onclick="goToPage('index.php?mod=places&place=${place.place_id}')">
+        <div class="content card" onclick="goToPage('index.php?mod=places&place=${place.place_id}&name=${place.name}')">
           <header>
             <h3>${place.name}</h3>
           </header>

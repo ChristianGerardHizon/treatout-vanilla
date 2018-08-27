@@ -2,6 +2,8 @@
 $module = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
 $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 
+
+$name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
 // echo $module
 ?>
 <link rel="stylesheet" type="text/css" href="modules/client/place/place.css">
@@ -18,7 +20,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                 <li id="avail"></li>
             </ul>
 
-            <a href="index.php?mod=directions&place=<?php echo $place ?>" class="button primary icon fa-map">Find terminal</a>
+            <a href="index.php?mod=terminal&place_id=<?php echo $place; ?>&name=<?php echo $name; ?>" class="button primary icon fa-map">Find terminal</a>
             </div>
         </div>
         <div class="inner">

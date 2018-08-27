@@ -3,7 +3,7 @@
 <head>
 <style>
   #myMap {
-     height: 500px;
+     height: 600px;
      width: 100%;
   }
 </style>
@@ -16,15 +16,13 @@
 <script type="text/javascript"> 
 
 
-  var map;
-  var marker;
   var myLatlng = new google.maps.LatLng(10.6840,122.9563);
-  var geocoder = new google.maps.Geocoder();
+
 
 function initialize() {
 
   var mapOptions = {
-    zoom: 14,
+    zoom: 12,
     center: myLatlng,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
@@ -33,13 +31,13 @@ function initialize() {
 
   marker = new google.maps.Marker({
     map: map,
-    position: myLatlng,
+    //position: myLatlng,
     draggable: true
   });
 
   var infoWindow = new google.maps.InfoWindow;
 
-  downloadUrl('modules/terminals/map_data.php?placeid=<?php echo $_GET['place_id']; ?>', function(data){
+  downloadUrl('modules/client/terminals/map_data.php?placeid=<?php echo $_GET['place_id']; ?>', function(data){
           var xml = data.responseXML;
 
           var markers = xml.documentElement.getElementsByTagName('marker');
@@ -93,29 +91,7 @@ function initialize() {
       }
 
        function doNothing() {}
-  geocoder.geocode({'latLng': myLatlng }, function(results, status) {
 
-    if (status == google.maps.GeocoderStatus.OK) {
-      if (results[0]) {
-        $('#latitude,#longitude').show();
-        $('#latitude').val(marker.getPosition().lat());
-        $('#longitude').val(marker.getPosition().lng());
-      }
-    }
-  });
-
-  google.maps.event.addListener(marker, 'dragend', function() {
-    geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        if (results[0]) {
-          $('#latitude').val(marker.getPosition().lat());
-          $('#longitude').val(marker.getPosition().lng());
-          infowindow.setContent(results[0].formatted_address);
-          infowindow.open(map, marker);
-        }
-      }
-    });
-  });
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -129,33 +105,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <br> 
 
 <center> Public transportations for <h3> <?php echo $_GET['name']; ?></h3></center>
-
-<br>
-<form method="POST" id="terminal_form">
-
-<select name="trans_id" id="trans_id" required>
-<?php
-include 'function.php';
-  foreach($data as $value){
-    if($value)
-  ?>
-    <option value="<?php echo $value->trans_id;?>">
-    <?php echo $value->name;?>
-    </option>
-  <?php
-  }
-?>
-
-</select>
-<br>
-<input name="latitude" type="text" id="latitude" placeholder="Latitude" required/><br>
-<input name="longitude" type="text" id="longitude" placeholder="Longitude" required/><br>
-<input name="fare_rate_min" type="number" step="0.01" id="min_rate" placeholder="Minimum fare rate" required/><br>
-<input name="fare_rate_max" type="number" step="0.01" id="max_rate" placeholder="Maximum fare rate" required/><br>
-<input name="description" type="text" id="max_rate" placeholder="Description"/><br>
-<input type="submit" name="submit">
-<input name="place_id" type="hidden" id="max_rate" placeholder="" value="<?php echo $_GET['place_id']; ?>" required/> <br>
-</form>
 
 </body>
 </html>
