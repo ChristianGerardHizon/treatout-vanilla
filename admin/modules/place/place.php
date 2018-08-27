@@ -79,18 +79,7 @@ $placename = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
                     <br>
                     <label>Maximum Rate</label>
                     <input type="number"  step="0.00" name="maxrate" id="maxrate" class="form-control" />
-                    <br>
-                    <label>Location Type</label>        
-                    <select style="width: 50%;" name="type" id="loctype" class="form-control" required>
-                        <option>
-                          Tourist Spot
-                        </option>
-                        <option>
-                           Restaurant
-                        </option>                              
-                                        
-                    </select>
-                    <br>            
+                    <br>         
                 
         </div>
         <div class="modal-footer">
