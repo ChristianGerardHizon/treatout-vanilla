@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include '../library/config.php';
 include '../classes/places.php';
@@ -33,21 +34,35 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
     <!-- Header -->
     <header id="header">
         <a class="logo" href="../index.php">Treatout</a>
-        <nav>
-            <a href="#menu">Menu</a>
-        </nav>
+
+        <?php 
+
+            if(isset($_SESSION['login']) && $_SESSION['is_admin'] == 1) {
+             echo "   <nav>
+                    <a href='#menu'>Menu</a>
+                </nav>";
+
+            }
+
+        ?>
     </header>
 
-    <!-- Nav -->
-    <nav id="menu">
-        <ul class="links">
-        <li> <a href="index.php">Dashboard</a></li>
-        <li> <a href="index.php?mod=accounts">User Accounts</a> </li>
-        <li> <a href='index.php?mod=places&service=tourist+spot'>Tourist Spots</a> </li>
-        <li> <a href='index.php?mod=places&service=restaurant'>Restaurant</a> </li>
-        <li> <a href='logout.php'>Logout</a> </li>
-        </ul>
-    </nav>
+     <?php
+            if(isset($_SESSION['login']) && $_SESSION['is_admin'] == 1) {
+
+        echo 
+            "<nav id='menu'>
+                <ul class='links'>
+                    <li> <a href='index.php'>Dashboard</a></li>
+                        <li> <a href='index.php?mod=accounts'>User Accounts</a> </li>
+                        <li> <a href='index.php?mod=places&service=tourist+spot'>Tourist Spots</a> </li>
+                        <li> <a href='index.php?mod=places&service=restaurant'>Restaurant</a> </li>
+                        <li> <a href='logout.php'>Logout</a> </li>
+                </ul>
+            </nav>";
+        }
+
+    ?>
 
 
     <div>
@@ -76,6 +91,13 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
             case 'accounts':
 
                 require_once 'modules/accounts/accounts.php';
+
+            break;
+
+
+            case 'login':
+
+                require_once 'loginform.php';
 
             break;
 

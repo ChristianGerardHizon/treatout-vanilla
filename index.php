@@ -58,7 +58,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                 if(!isset($_SESSION['login'])) {
                     echo "  <li> <a href='index.php?mod=register'>Register</a> </li>
                         <li> <a href='index.php?mod=login'>Login</a> </li>
-                         <li> <a href='./admin/loginform.php'>Admin Login</a> </li>
+                         <li> <a href='./admin/index.php?mod=login'>Admin Login</a> </li>
                         ";
                 }
             ?>

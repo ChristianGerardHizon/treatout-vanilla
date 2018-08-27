@@ -28,7 +28,37 @@ class User {
 
           $data = $q->fetch(PDO::FETCH_OBJ);
           $_SESSION['login'] = true;
+    
+          
+          return true;
 
+        }
+        
+    }
+
+
+    public function adminlogin($email, $password) {
+
+        session_start();
+
+        $q = $this->connection->prepare('SELECT * FROM users WHERE email = ? AND password = ?');
+
+        $q->execute([$email,$password]);
+
+        $count = $q->rowCount();
+
+
+        if($count == 0) {
+
+            return false;
+
+        } else {
+
+
+          $data = $q->fetch(PDO::FETCH_OBJ);
+          $_SESSION['login'] = true;
+          $_SESSION['is_admin'] = 1;
+          
           return true;
 
         }

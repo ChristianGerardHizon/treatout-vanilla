@@ -22,6 +22,7 @@
             var link = "index.php"
             window.location.href=link
 
+
           }else{
 
               alert("Invalid login information.")
