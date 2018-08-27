@@ -13,15 +13,26 @@ function findGetParameter(parameterName) {
   return result;
 }
 
-let service = 'restaurants'
+const service = `${findGetParameter('service')}`
 const query = `${findGetParameter('query')}`
 
 let next_page = null
 
 document.addEventListener("DOMContentLoaded", function(event) {
   document.getElementById("placeLists").innerHTML = "";
-  view(`${service}+in`, 'Bacolod', next_page )
-
+  // Get Data
+  //   getData(`${SERVER_URL}/places`);
+  console.log( service )
+  if( service != 'search'){
+    console.log(service)
+    if( service === 'tourist+spot' || service === 'restaurant') {
+      view(`${service}+in`, 'Bacolod', next_page )
+    }else{
+      document.getElementById("placeLists").innerHTML = `<div class="inner content"><br/><br/><h2> Sorry we are unable to get what you requested for</h2><br/><br/></div>`
+    }
+  }else{
+    view(`${query}`, 'Bacolod', next_page )
+  }  
 });
 
 // Bottom Listener
@@ -34,6 +45,29 @@ window.onscroll = function(ev) {
     next_page = null
   }
 };
+
+
+function getData(url) {
+  const container = document.getElementById("placeLists");
+  axios.get(url).then(function(response) {
+    const results = response.data;
+    console.log(results);
+    results.map(function(place) {
+      container.innerHTML += 
+      `<section>
+        <div class="content card">
+          <header>
+            <h3>${place.name}</h3>
+          </header>
+          <p>Can't Decide or She does not know where to go or eat? Oh boy let help you with that</p>
+        </div>
+      </section>`
+    });
+  }).catch( function(e){
+    console.error(e)
+    contaianer.innerHTML = `<br/><div class="inner content"><h2> Sorry we are unable to get what you requested for</h2></div>`
+  })
+}
 
 // Temp Functions
 
@@ -78,18 +112,7 @@ function goToPage( str ) {
 }
 
 function view(query, place, nextpage ) {
+
   if( nextpage ) return getGmapData(`${CORS_FIX}https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}+${place}&key=AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k&pagetoken=${next_page}`);
   getGmapData(`${CORS_FIX}https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}+${place}&key=AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k`);
-}
-
-function viewResto() {
-  service = "restaurants"
-  document.getElementById("placeLists").innerHTML = "";
-  view(`${service}+in`, 'Bacolod', next_page )
-}
-
-function viewTours() {
-  service = "tourist+spots"
-  document.getElementById("placeLists").innerHTML = "";
-  view(`${service}+in`, 'negros+occidental', next_page )
 }
