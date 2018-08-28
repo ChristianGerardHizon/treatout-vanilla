@@ -37,7 +37,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 
     <!-- Header -->
     <header id="header">
-        <a class="logo" href="../index.php">Treatout</a>
+        <a class="logo" href="index.php">Treatout</a>
 
         <?php 
 

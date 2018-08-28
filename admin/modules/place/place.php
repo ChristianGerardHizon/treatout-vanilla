@@ -60,7 +60,6 @@ $placename = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
             <div class="content">
             <h2> Reviews</h2>
 
-            <!-- Reviews -->
             <span id="reviews">
             </span>
             <br/>
@@ -77,6 +76,9 @@ $placename = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
 
         <div class="modal-body">
             <form method="post" id="user_form" enctype="multipart/form-data">
+
+                    <label>Name</label>
+                    <input type="text" name="name" value="<?php echo $_GET['name']; ?>" readonly><br>
                     <label>Minimum Rate</label>
                     <input type="number" step="0.00"  name="minrate" id="minrate" class="form-control" />
                     <br>
@@ -241,7 +243,7 @@ $(document).on('submit', '#tagform', function(event){
             if(minrate != '' && maxrate !='')
             {
                 $.ajax({
-                    url:"modules/place/insert.php",
+                    url:"modules/place/addtag.php",
                     method:'POST',
                     data:new FormData(this),
                     contentType:false,
@@ -250,7 +252,7 @@ $(document).on('submit', '#tagform', function(event){
                     success:function(data)
                     {
                         alert(data.msg);
-                        $('#user_form')[0].reset();
+                        $('#tagForm')[0].reset();
                          modal.style.display = "none";
                          location.reload();
                     }
@@ -281,7 +283,7 @@ $(document).on('submit', '#edit_form', function(event){
                     success:function(data)
                     {
                         alert(data.msg);
-                        modaledit.style.display = "none";
+                        tagModal.style.display = "none";
                         location.reload();
                     }
                 });

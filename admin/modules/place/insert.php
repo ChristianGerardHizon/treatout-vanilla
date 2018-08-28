@@ -1,12 +1,13 @@
 <?php 
 	include '../../../library/config.php';
 
-	$statement = $connection->prepare("INSERT INTO places(place_id, rate_min, rate_max) VALUES ( :placeid, :ratemin, :ratemax)");
+	$statement = $connection->prepare("INSERT INTO places(place_id, rate_min, rate_max, name) VALUES ( :placeid, :ratemin, :ratemax, :name)");
 		$result = $statement->execute(
 			array(
 				':placeid' => 	$_POST['place_id'],
 				':ratemin'	=>	$_POST["minrate"],
-				':ratemax'	=>	$_POST["maxrate"]
+				':ratemax'	=>	$_POST["maxrate"],
+				':name'	=>	$_POST["name"],
 
 			)
 	);

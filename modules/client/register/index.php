@@ -1,8 +1,8 @@
  <form method="POST" id="register">
-	<input type="text" name="name" placeholder="full name">
-	<input type="text" name="email" placeholder="email">
-	<input type="password" name="password" placeholder="password">
-	<input type="password" name="confirmpassword" placeholder="confirm password">
+	<input type="text" name="name" placeholder="full name" required>
+	<input type="text" name="email" placeholder="email" required>
+	<input type="password" name="password" placeholder="password" required>
+	<input type="password" name="confirmpassword" placeholder="confirm password" required>
 	<input type="submit">
 </form>
 
@@ -16,9 +16,11 @@
         data:new FormData(this),
         contentType:false,
         processData:false,
+        dataType :'JSON',
         success:function(data)
         {
-          alert(data)
+          alert(data.response);
+          window.location.reload();
         }
       });
   });

@@ -88,39 +88,7 @@ function getLocation() {
   }
 }
 
-function calculateAndDisplayRoute(
-  directionsService,
-  directionsDisplay,
-  userPostion = null
-) {
-  if (place && userPostion) {
-    // console.log(`Current Place`, place);
-    var start = userPostion;
-    var end = place.geometry.location;
-    // console.log(`Start`, start, `| END`, end);
-    try {
-      directionsService.route(
-        {
-          origin: start,
-          destination: end,
-          travelMode: "DRIVING"
-        },
-        function(response, status) {
-          if (status === "OK") {
-            // console.log(`Response`, response);
-            directionsDisplay.setDirections(response);
-          } else {
-            window.alert("Directions request failed due to " + status);
-          }
-        }
-      );
-    } catch (e) {
-      console.error(e);
-    }
-  } else {
-    console.error("Missing Parameters");
-  }
-}
+
 
 function getData(uri) {
   console.log(uri);
