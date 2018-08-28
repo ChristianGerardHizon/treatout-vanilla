@@ -80,7 +80,7 @@
 					<div class="content">
 						<section>
 							<h3>Treatout</h3>
-							<p>Please take note that treatout available on the island nation of Negros Occidental. While Tourist Attractions are avaialbale on the great city of Bacolod. Treatout will serve you with its best.
+							<p>Please take note that treatout available on the island nation of Negros Occidental. Treatout will serve you with its best.
 							</p>
 						</section>
 						<section>

@@ -8,6 +8,21 @@ class User {
         $this->connection = $connection;
     }
 
+
+    public function getAll() {
+
+        $query = "SELECT * FROM users";
+
+        $query = $this->connection->prepare($query);
+
+        $query->execute();
+
+        return $data =  $query->fetchAll(PDO::FETCH_OBJ);
+        
+    }
+
+
+
     public function login($email, $password) {
 
         session_start();

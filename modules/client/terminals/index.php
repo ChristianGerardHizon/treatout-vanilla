@@ -57,7 +57,7 @@ function initialize() {
             infowincontent.appendChild(document.createElement('br'));
 
             var text = document.createElement('text');
-            text.textContent = "Estimated fare rate Php " + minfare + " - " + maxfare
+            text.textContent = "Estimated fare rate: Php " + minfare + " - " + maxfare
             infowincontent.appendChild(text);
 
             var image = 'https://static.thenounproject.com/png/331565-200.png';

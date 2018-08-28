@@ -5,7 +5,7 @@
 	</h1>
 </div>
 <br>
-<button style="margin-left: 20px;" type="button" id="btn-add" data-toggle="modal" data-target="#annModal" class="button primary icon fa-map">New Transportation</button></h3>
+<button style="margin-left: 20px;" type="button" id="btn-add" data-toggle="modal" data-target="#annModal" class="button primary">New Transportation</button></h3>
 
 
 
