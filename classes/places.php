@@ -21,6 +21,20 @@ class Places {
     }
 
 
+    public function search($searchvalue, $minrate, $maxrate) {
+
+        $query = "SELECT * FROM place_tags pt INNER JOIN places p ON pt.place_id = p.place_id  WHERE pt.tag_name LIKE ? OR p.rate_min < ? OR p.rate_max < ? ;";
+
+        $query = $this->connection->prepare($query);
+
+        $query->execute([$searchvalue, $minrate, $maxrate]);
+
+        return $data =  $query->fetchAll(PDO::FETCH_OBJ);
+        
+    }
+
+
+
     public function checkPlace($id) {
 
         $query = "SELECT * FROM places WHERE place_id = ?";
@@ -46,5 +60,8 @@ class Places {
         return $data =  $query->fetchAll(PDO::FETCH_OBJ);
 
     }
+
+
+
 
 }

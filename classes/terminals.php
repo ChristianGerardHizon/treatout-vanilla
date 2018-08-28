@@ -19,4 +19,7 @@ class Terminals {
         return $data =  $query->fetchAll(PDO::FETCH_OBJ);
         
     }
+
+
+    
 }
