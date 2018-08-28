@@ -60,7 +60,6 @@ $placename = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
             <div class="content">
             <h2> Reviews</h2>
 
-            <!-- Reviews -->
             <span id="reviews">
             </span>
             <br/>
@@ -77,6 +76,9 @@ $placename = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
 
         <div class="modal-body">
             <form method="post" id="user_form" enctype="multipart/form-data">
+
+                    <label>Name</label>
+                    <input type="text" name="name" value="<?php echo $_GET['name']; ?>" readonly><br>
                     <label>Minimum Rate</label>
                     <input type="number" step="0.00"  name="minrate" id="minrate" class="form-control" />
                     <br>
