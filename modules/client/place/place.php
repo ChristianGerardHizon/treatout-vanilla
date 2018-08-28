@@ -17,6 +17,9 @@ $name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
             <ul class="alt">
                 <li id="description"></li>
                 <li id="phoneNum"></li>
+                <li> Price range: <?php $res = $places->show($place); foreach ($res as $value) {
+                    echo $value->rate_min." - ".$value->rate_max;
+                } ?>  </li>
                 <li id="avail"></li>
             </ul>
 

@@ -2590,3 +2590,19 @@ body.is-menu-visible #menu {
     text-decoration: none;
     cursor: pointer;
 }
+
+
+
+.closetag {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closetag:hover,
+.closetag:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

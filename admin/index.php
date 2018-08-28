@@ -4,9 +4,11 @@ session_start();
 include '../library/config.php';
 include '../classes/places.php';
 include '../classes/transportation.php';
+include '../classes/user.php';
 
 
 $transportation = new Transportation($connection);
+$user = new User($connection);  
 
 
 
