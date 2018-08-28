@@ -1,8 +1,8 @@
 <?php
 $module = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
 $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
+$placename = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
 
-// echo $module
 ?>
 <link rel="stylesheet" type="text/css" href="modules/place/place.css">
 
@@ -15,11 +15,35 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
             <ul class="alt">
                 <li id="description"></li>
                 <li id="phoneNum"></li>
+                <li> Price range: <?php $res = $places->show($place); foreach ($res as $value) {
+                    echo $value->rate_min." - ".$value->rate_max;
+                } ?>  </li>
                 <li id="avail"></li>
             </ul>
 
-            <a href="index.php?mod=terminal&place=<?php echo $place ?>" class="button primary icon fa-map">Terminals</a>
-            <a href="index.php?mod=terminal&place=<?php echo $place ?>" class="button primary icon fa-map">Edit</a>
+            <a href="index.php?mod=terminal&place_id=<?php echo $place ?>&name=<?php echo $_GET['name']; ?>" class="button primary icon fa-map">Terminals</a>
+
+            <?php
+
+
+                    $res = $places->checkPlace($place);
+
+                    if($res == 0) {
+
+                        echo  '<button type="button" id="btn-add" data-toggle="modal" data-target="#annModal" class="button primary icon fa-map">Add Details</button></h3>';
+
+
+
+
+                    } else {
+
+                        echo  '<button type="button" id="'.$place.'" data-toggle="modal" data-target="#annModal" class="btn-edit button primary icon fa-map">Edit</button></h3>';
+                    }
+
+            ?>
+       
+          
+
             </div>
         </div>
         <div class="inner">
@@ -41,6 +65,183 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
     </div>
 </div>
 
+<div id="detailsModal" class="modal">
+    <div class="modal-content">
+           <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3>Add details</h3>
+        </div>
+
+        <div class="modal-body">
+            <form method="post" id="user_form" enctype="multipart/form-data">
+                    <label>Minimum Rate</label>
+                    <input type="number" step="0.00"  name="minrate" id="minrate" class="form-control" />
+                    <br>
+                    <label>Maximum Rate</label>
+                    <input type="number"  step="0.00" name="maxrate" id="maxrate" class="form-control" />
+                    <br>         
+                
+        </div>
+        <div class="modal-footer">
+            <input type="hidden" name="place_id" id="placeid" value="<?php echo $place; ?>" />
+            <input type="submit" name="action" id="action" value="Add" />
+        </div>
+    </form>
+    </div>
+</div>
+
+<div id="editModal" class="modal">
+    <div class="modal-content">
+           <div class="modal-header">
+            <span class="closeedit">&times;</span>
+            <h3>Edit details</h3>
+        </div>
+
+        <div class="modal-body">
+            <form method="post" id="edit_form" enctype="multipart/form-data">
+                    <label>Minimum Rate</label>
+                    <input type="number" step="0.00"  name="minrate" id="minrateedit" class="form-control" />
+                    <br>
+                    <label>Maximum Rate</label>
+                    <input type="number"  step="0.00" name="maxrate" id="maxrateedit" class="form-control" />
+                    <br>
+        </div>
+        <div class="modal-footer">
+            <input type="hidden" name="placeid" id="placeid" value="<?php echo $place; ?>" />
+            <input type="submit" name="action" id="action" value="Submit" />
+        </div>
+    </form>
+    </div>
+</div>
+
 <script src="modules/place/place.js"></script>
-<!-- <div id="right-panel"></div>
-<div id="map"></div> -->
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+    // Get the modal
+var modal = document.getElementById('detailsModal');
+var modaledit = document.getElementById('editModal');
+
+// Get the button that opens the modal
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+var spanedit = document.getElementsByClassName("closeedit")[0];
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+spanedit.onclick = function() {
+    modaledit.style.display = "none";
+}
+
+
+$(document).on('click', '#btn-add', function(event) {
+
+      modal.style.display = "block";
+});
+
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+window.onclick = function(event) {
+    if (event.target == modaledit) {
+        modaledit.style.display = "none";
+    }
+}
+
+$(document).on('submit', '#user_form', function(event){
+        event.preventDefault();
+
+        var minrate = $('#minrate').val();
+        var maxrate = $('#maxrate').val();
+
+            if(minrate != '' && maxrate !='')
+            {
+                $.ajax({
+                    url:"modules/place/insert.php",
+                    method:'POST',
+                    data:new FormData(this),
+                    contentType:false,
+                    processData:false,
+                    dataType: 'JSON',
+                    success:function(data)
+                    {
+                        alert(data.msg);
+                        $('#user_form')[0].reset();
+                         modal.style.display = "none";
+                         location.reload();
+                    }
+                });
+            }
+            else
+            {
+                alert("Please fill up required information!");
+            }
+});
+
+
+$(document).on('submit', '#edit_form', function(event){
+        event.preventDefault();
+
+        var minrate = $('#minrateedit').val();
+        var maxrate = $('#maxrateedit').val();
+
+            if(minrate != '' && maxrate !='')
+            {
+                $.ajax({
+                    url:"modules/place/update.php",
+                    method:'POST',
+                    data:new FormData(this),
+                    contentType:false,
+                    processData:false,
+                    dataType: 'JSON',
+                    success:function(data)
+                    {
+                        alert(data.msg);
+                        modaledit.style.display = "none";
+                        location.reload();
+                    }
+                });
+            }
+            else
+            {
+                alert("Please fill up required information!");
+            }
+});
+
+
+$(document).on('click', '.btn-edit', function(){
+
+        var placeid = $(this).attr("id");
+        
+        $.ajax({
+            url:"modules/place/getDetails.php",
+            method:'POST',
+            data:{placeid:placeid},
+            dataType:"JSON",
+            success:function(data)
+            {
+                modaledit.style.display = "block";
+                $('#minrateedit').val(data.minrate);
+                $('#maxrateedit').val(data.maxrate);
+        }
+    })
+});
+
+
+
+
+
+});   
+
+</script>   

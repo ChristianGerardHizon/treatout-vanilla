@@ -1,4 +1,16 @@
 <?php
+session_start();
+
+include '../library/config.php';
+include '../classes/places.php';
+include '../classes/transportation.php';
+
+
+$transportation = new Transportation($connection);
+
+
+
+$places = new Places($connection);
 
 $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod'] : '';
 $sub = (isset($_GET['sub']) && $_GET['sub'] != '') ? $_GET['sub'] : '';
@@ -17,30 +29,43 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
     <script src="index.js"></script>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
-
-
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
 </head>
 <body>
 
     <!-- Header -->
     <header id="header">
         <a class="logo" href="../index.php">Treatout</a>
-        <nav>
-            <a href="#menu">Menu</a>
-        </nav>
+
+        <?php 
+
+            if(isset($_SESSION['login']) && $_SESSION['is_admin'] == 1) {
+             echo "   <nav>
+                    <a href='#menu'>Menu</a>
+                </nav>";
+
+            }
+
+        ?>
     </header>
 
-    <!-- Nav -->
-    <nav id="menu">
-        <ul class="links">
-        <li> <a href="index.php">Dashboard</a></li>
-        <li> <a href="index.php?mod=accounts">User Accounts</a> </li>
-        <li> <a href='index.php?mod=places&service=tourist+spot'>Tourist Spots</a> </li>
-        <li> <a href='index.php?mod=places&service=restaurant'>Restaurant</a> </li>
-        <li> <a href='logout.php'>Logout</a> </li>
-        </ul>
-    </nav>
+     <?php
+            if(isset($_SESSION['login']) && $_SESSION['is_admin'] == 1) {
+
+        echo 
+            "<nav id='menu'>
+                <ul class='links'>
+                    <li> <a href='index.php'>Dashboard</a></li>
+                        <li> <a href='index.php?mod=accounts'>User Accounts</a> </li>
+                        <li> <a href='index.php?mod=places&service=tourist+spot'>Tourist Spots</a> </li>
+                        <li> <a href='index.php?mod=places&service=restaurant'>Restaurants</a> </li>
+                        <li> <a href='index.php?mod=transportation'>Transportations</a> </li>
+                        <li> <a href='logout.php'>Logout</a> </li>
+                </ul>
+            </nav>";
+        }
+
+    ?>
 
 
     <div>
@@ -51,7 +76,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 
                 require_once 'modules/dashboard/dashboard.php';
 
-                break;
+            break;
 
             case 'places':
 
@@ -64,25 +89,39 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                     require_once 'modules/places/places.php';
                 }
 
-                break;
+            break;
 
             case 'accounts':
 
                 require_once 'modules/accounts/accounts.php';
 
-                break;
+            break;
 
-            case 'route':
 
-            require_once 'modules/place/route/route.php';
+            case 'login':
 
-                break;
+                require_once 'loginform.php';
+
+            break;
+
+
+            case 'transportation':
+
+                require_once 'modules/transportation/index.php';
+
+            break;
+
+            case 'terminal':
+
+                require_once 'modules/terminals/index.php';
+
+            break;
 
             default: 
 
                 require_once 'modules/dashboard/dashboard.php';
 
-                break;
+            break;
         }
         ?>
     

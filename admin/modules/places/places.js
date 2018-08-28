@@ -20,8 +20,7 @@ let next_page = null
 
 document.addEventListener("DOMContentLoaded", function(event) {
   document.getElementById("placeLists").innerHTML = "";
-  // Get Data
-  //   getData(`${SERVER_URL}/places`);
+
   console.log( service )
   if( service != 'search'){
     console.log(service)
@@ -89,7 +88,7 @@ function getGmapData(url) {
     results.map(function(place) {
       container.innerHTML += 
       `<section>
-        <div class="content card" onclick="goToPage('index.php?mod=places&place=${place.place_id}')">
+        <div class="content card" onclick="goToPage('index.php?mod=places&place=${place.place_id}&name=${place.name}')">
           <header>
             <h3>${place.name}</h3>
           </header>

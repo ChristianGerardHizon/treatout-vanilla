@@ -59,9 +59,8 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                 if(!isset($_SESSION['login'])) {
                     echo "  <li> <a href='index.php?mod=register'>Register</a> </li>
                         <li> <a href='index.php?mod=login'>Login</a> </li>
-                         <li> <a href='./admin'>Admin</a> </li>
+                         <li> <a href='./admin/index.php?mod=login'>Admin Login</a> </li>
                         ";
-
                 }
             ?>
           
@@ -83,8 +82,8 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                 case 'about-us':
                     require_once 'modules/client/about-us/about-us.php';
                     break;
-                case 'directions':
-                    require_once 'modules/client/directions/directions.php';
+                case 'terminal':
+                    require_once 'modules/client/terminals/index.php';
                     break;
                 case 'contact-us':
                     require_once 'modules/client/contact-us/contact-us.php';
