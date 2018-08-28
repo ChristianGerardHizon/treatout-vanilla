@@ -12,10 +12,11 @@
 						<h1>Search Your Most Desired Places Here</h1>
 						<h3>
 							Don't know where to Eat and Visit here in Negros?<br/>
-							We got you fam! Don't Worry we're Professionals
+							We got you fam! 
 						</h3>
 					</header>
 					<div class="highlights">
+
 						<section>
 							<div class="content">
 								<header>
@@ -25,6 +26,7 @@
 								<p>Can't Decide or She does not know where to go or eat? Oh boy let help you with that</p>
 							</div>
 						</section>
+						
 						<section>
 							<div class="content">
 								<header>
@@ -80,7 +82,7 @@
 					<div class="content">
 						<section>
 							<h3>Treatout</h3>
-							<p>Please take note that treatout available on the island nation of Negros Occidental. Treatout will serve you with its best.
+							<p>Please take note, treatout is only available in the island nation of Negros Occidental. Treatout will serve you with its best. Thank you!
 							</p>
 						</section>
 						<section>

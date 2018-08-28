@@ -241,7 +241,7 @@ $(document).on('submit', '#tagform', function(event){
             if(minrate != '' && maxrate !='')
             {
                 $.ajax({
-                    url:"modules/place/insert.php",
+                    url:"modules/place/addtag.php",
                     method:'POST',
                     data:new FormData(this),
                     contentType:false,
@@ -250,7 +250,7 @@ $(document).on('submit', '#tagform', function(event){
                     success:function(data)
                     {
                         alert(data.msg);
-                        $('#user_form')[0].reset();
+                        $('#tagForm')[0].reset();
                          modal.style.display = "none";
                          location.reload();
                     }
@@ -281,7 +281,7 @@ $(document).on('submit', '#edit_form', function(event){
                     success:function(data)
                     {
                         alert(data.msg);
-                        modaledit.style.display = "none";
+                        tagModal.style.display = "none";
                         location.reload();
                     }
                 });

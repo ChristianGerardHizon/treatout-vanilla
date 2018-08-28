@@ -174,6 +174,7 @@ include 'function.php';
         success:function(data)
         {
           alert(data.msg)
+          location.reload()
         }
       });
   });

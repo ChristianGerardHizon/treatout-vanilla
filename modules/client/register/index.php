@@ -18,7 +18,8 @@
         processData:false,
         success:function(data)
         {
-          alert(data)
+          alert(data);
+          window.location.reload();
         }
       });
   });

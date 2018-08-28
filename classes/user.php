@@ -42,6 +42,9 @@ class User {
 
 
           $data = $q->fetch(PDO::FETCH_OBJ);
+
+          $_SESSION['email'] = $data->email;
+          $_SESSION['name'] = $data->name;
           $_SESSION['login'] = true;
     
           
@@ -112,8 +115,7 @@ class User {
             if($res) {
 
     
-
-                echo "User successfully created!";
+               return true;
 
             } 
 
@@ -121,7 +123,7 @@ class User {
         } else  {
 
 
-            echo "User already exist!";
+           return false;
 
         }   
         
