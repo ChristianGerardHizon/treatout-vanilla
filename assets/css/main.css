@@ -85,15 +85,7 @@ input, select, textarea {
 /* Typography */
 html {
   font-size: 13pt; }
-  @media screen and (max-width: 1680px) {
-    html {
-      font-size: 11pt; } }
-  @media screen and (max-width: 980px) {
-    html {
-      font-size: 12pt; } }
-  @media screen and (max-width: 480px) {
-    html {
-      font-size: 11pt; } }
+
 
 body {
   background-color: #ffffff;

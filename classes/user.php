@@ -43,9 +43,11 @@ class User {
 
           $data = $q->fetch(PDO::FETCH_OBJ);
 
+          $_SESSION['id'] = $data->id;
           $_SESSION['email'] = $data->email;
           $_SESSION['name'] = $data->name;
           $_SESSION['login'] = true;
+          $_SESSION['is_admin'] = $data->is_admin;
     
           
           return true;

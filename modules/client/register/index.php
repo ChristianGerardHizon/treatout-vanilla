@@ -19,8 +19,12 @@
         dataType :'JSON',
         success:function(data)
         {
-          alert(data.response);
-          window.location.reload();
+          if(data.response) {
+
+            var link = "index.php"
+            window.location.href=link
+
+          }
         }
       });
   });

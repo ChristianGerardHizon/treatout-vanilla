@@ -1,10 +1,3 @@
-<!-- CTA -->
-<section id="cta" class="wrapper">
-    <div class="inner">
-        <h1>TREATOUT</h1>
-        <p class="paragraph">WE'LL HELP YOU FIND YOUR DESTINATION</p>
-    </div>
-</section>
 
 <section class="wrapper">
 				<div class="inner">
@@ -79,31 +72,7 @@
 		<!-- Footer -->
 			<footer id="footer">
 				<div class="inner">
-					<div class="content">
-						<section>
-							<h3>Treatout</h3>
-							<p>Please take note, treatout is only available in the island nation of Negros Occidental. Treatout will serve you with its best. Thank you!
-							</p>
-						</section>
-						<section>
-							<h4>Our Sponsors</h4>
-							<ul class="alt">
-								<li><a href="#">Non-Framers Org.</a></li>
-								<li><a href="#">HCJ International</a></li>
-								<li><a href="#">Google Developers</a></li>
-								<li><a href="#">Pure End Developers</a></li>
-							</ul>
-						</section>
-						<section>
-							<h4>We also have social Media</h4>
-							<ul class="plain">
-								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
-								<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
-								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
-								<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
-							</ul>
-						</section>
-					</div>
+
 					<div class="copyright">
 						&copy; Treatout 2018
 					</div>
