@@ -8,12 +8,19 @@
 
 	if($_POST['password'] == $_POST['confirmpassword']) {
 
-		$register = $users->register($_POST['name'], $_POST['email'], md5($_POST['password']));
+		$register = $users->register($_POST['name'], $_POST['email'],$_POST['password']);
 
 
 		if($register) {
 
-				$output = array('response' => "Account created succssfuly.");
+			$login = $users->login($_POST['email'], md5($_POST['password']));
+
+			if($login){
+
+				 $output = array('response' => true);
+
+			}
+
 	
 		} else {
 
@@ -26,4 +33,5 @@
 	}
 
 	echo json_encode($output);
+
 ?>	

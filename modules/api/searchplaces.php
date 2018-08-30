@@ -1,4 +1,4 @@
-<?php 
+1<?php 
 	include '../../library/config.php';
 	include '../../classes/places.php';
 

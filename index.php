@@ -35,6 +35,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 		<!-- Header -->
         <header id="header">
             <a class="logo" href="index.php">Treatout</a>
+
             <nav>
                 <a href="#menu">Menu</a>
             </nav>
@@ -43,9 +44,21 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 		<!-- Nav -->
         <nav id="menu">
             <ul class="links">
+
+
+           <?php  
+
+
+           if(isset($_SESSION['id'])) {
+
+              echo "<li> <a href='index.php?mod=profile&id=".$_SESSION['id']."'>".$_SESSION['name']."    </a></li>";
+           }
+         
+           ?>
             <li> <a href="index.php">Home </a></li>
             <li> <a href="index.php?mod=about-us">About Us</a></li>
             <li> <a href="index.php?mod=contact-us">Contact Us</a> </li>
+
 
             <?php 
                 if(isset($_SESSION['login'])) {
@@ -91,8 +104,12 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                    case 'register':
                 require_once 'modules/client/register/index.php';
                 break;
-                   case 'login':
-                require_once 'modules/client/login/index.php';
+                case 'login':
+                  require_once 'modules/client/login/index.php';
+                break;
+
+                 case 'searchvalue':
+                  require_once 'modules/client/login/index.php';
                 break;
                 case 'places':
                     if($place != '' ){

@@ -58,7 +58,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
             "<nav id='menu'>
                 <ul class='links'>
                     <li> <a href='index.php'>Dashboard</a></li>
-                        <li> <a href='index.php?mod=accounts'>User Accounts</a> </li>
+                        <li> <a href='index.php?mod=account'>User Accounts</a> </li>
                         <li> <a href='index.php?mod=places&service=tourist+spot'>Tourist Spots</a> </li>
                         <li> <a href='index.php?mod=places&service=restaurant'>Restaurants</a> </li>
                         <li> <a href='index.php?mod=transportation'>Transportations</a> </li>
@@ -93,7 +93,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 
             break;
 
-            case 'accounts':
+            case 'account':
 
                 require_once 'modules/accounts/accounts.php';
 

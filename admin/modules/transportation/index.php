@@ -27,7 +27,7 @@ echo "
 		      <p>$value->description</p>
 		      
 
-		      <button id='$value->trans_id' type='button' class='btn-edit' >Edit</button>
+		   
 		    </div>
 
 
@@ -38,3 +38,84 @@ echo "
 ?>
 	</div>
 </div>
+
+
+
+<div id="transpoModal" class="modal">
+    <div class="modal-content">
+           <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3>New Transportation</h3>
+        </div>
+
+        <div class="modal-body">
+            <form method="post" id="transpoform" enctype="multipart/form-data">
+                    <label>Name</label>
+                    <input type="text" name="name" id="tagname" class="form-control" />
+                    <br>
+
+                    <label>Description</label>
+                    	<input type="text" name="desc" id="tagname" class="form-control" />
+                    <br>
+        </div>
+        <div class="modal-footer">
+    
+            <input type="submit" name="action" id="action" value="Submit" />
+        </div>
+    </form>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+var modal = document.getElementById('transpoModal');
+
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+
+    modal.style.display = "none";
+
+}
+
+$(document).on('click', '#btn-add', function(event) {
+
+      modal.style.display = "block";
+});
+
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+$(document).on('submit', '#transpoform', function(event){
+        event.preventDefault();
+
+                $.ajax({
+                    url:"modules/transportation/insert.php",
+                    method:'POST',
+                    data:new FormData(this),
+                    contentType:false,
+                    processData:false,
+                    dataType: 'JSON',
+                    success:function(data)
+                    {
+                        alert(data.msg);
+                        $('#transpoform')[0].reset();
+                         modal.style.display = "none";
+                         location.reload();
+                    }
+                });
+           
+      
+});
+
+});
+
+</script>
