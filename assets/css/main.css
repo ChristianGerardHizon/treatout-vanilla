@@ -2887,3 +2887,19 @@ body.is-menu-visible #menu {
     text-decoration: none;
     cursor: pointer;
 }
+
+.loginform{
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.025);
+  margin-bottom: 2rem;
+  padding: 3rem;
+}
+
+.logincontainer {
+    margin-top: 50px;
+    width: 45%;
+   margin-left: auto;
+    margin-right: auto;
+
+}

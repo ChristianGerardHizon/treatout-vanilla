@@ -1,4 +1,9 @@
-
+<section id="cta" class="wrapper">
+    <div class="inner">
+        <h1>TREATOUT</h1>
+        <p class="paragraph">WE'LL HELP YOU FIND YOUR DESTINATION</p>
+    </div>
+</section>
 <section class="wrapper">
 				<div class="inner">
 					<header class="special">
@@ -56,15 +61,7 @@
 								<p>Wanna know about us? Really? We will show you a brief but not long history of our site</p>
 							</div>
 						</section>
-						<section>
-							<div class="content">
-								<header>
-									<a href="index.php?mod=account" class="icon fa-floppy-o"><span class="label">Icon</span></a>
-									<h3>Account</h3>
-								</header>
-								<p>Can't Remember that last place you visited? or just want to save a restaurant or place for that special date? We got you covered</p>
-							</div>
-						</section>
+	
 					</div>
 				</div>
 			</section>

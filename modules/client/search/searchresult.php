@@ -1,7 +1,7 @@
 <?php
 
 
-	$list= $places->search($_POST['searchvalue'], $_POST['minrate'], $_POST['maxrate']);
+	if($list= $places->search($_POST['searchvalue'], $_POST['minrate'], $_POST['maxrate'])) {
 
 	foreach ($list as $value) {
 ?>
@@ -10,7 +10,7 @@
 		<section>
         <div class="content card">
           <header>
-           <a href="index.php?mod=places&place=<?php echo $value->place_id; ?> "> <h3><?php echo $value->name?></h3></a>
+           <a href="index.php?mod=places&place=<?php echo $value->place_id; ?>&name=<?php echo $value->name; ?> "> <h3><?php echo $value->name?></h3></a>
           </header>
           <h2></h2>
           <p><?php echo 'Estimated price range <br> Php'.$value->rate_min.'-'.$value->rate_max; ?></p>
@@ -20,4 +20,6 @@
 </div>	
 <?php
 	}
+} else 
+  echo "<p style='margin-left: 47%;'> No results found.. </p>"
 ?>

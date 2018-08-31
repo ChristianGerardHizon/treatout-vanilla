@@ -15,7 +15,8 @@
 
 			array_push($output, array(
 
-				'response' => 'User successfuly added!'
+				'response' => 'User success	!',
+				'login' => true
 
 			));
 

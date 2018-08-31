@@ -1,8 +1,25 @@
-<form method="POST" id="login">
-	<input type="text" name="email" placeholder="email">
-	<input type="password" name="password" placeholder="password">
-	<input type="submit">
-</form>
+
+
+<div class="logincontainer" >
+
+
+    <section>
+        <div class="loginform">
+          <header>
+            <h3>Login</h3>
+          </header>
+          <form method="POST" id="login">
+            <input type="text" name="email" placeholder="email">
+            <br>
+            <input type="password" name="password" placeholder="password">
+            <br>
+            <input type="submit">
+          </form>
+        </div>
+  </section>
+
+</div>
+
 
 <script type="text/javascript">
         $(document).ready(function(){

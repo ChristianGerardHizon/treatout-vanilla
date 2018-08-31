@@ -5,12 +5,15 @@ session_start();
 include 'library/config.php';
 include 'classes/transportation.php';
 include 'classes/places.php';
+include 'classes/user.php';
 
 $places = new Places($connection);
 $transportation = new Transportation($connection);
+$users = new User($connection);
 
 $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod'] : '';
 $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
+
 
 
 ?>
@@ -26,7 +29,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="assets/css/main.css">
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
         <script src="index.js"></script>
 
     </head>
@@ -51,7 +54,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 
            if(isset($_SESSION['id'])) {
 
-              echo "<li> <a href='index.php?mod=profile&id=".$_SESSION['id']."'>".$_SESSION['name']."    </a></li>";
+              echo "<li> <a href='index.php?mod=profile&id=".$_SESSION['id']."'>".$_SESSION['name']."'s profile   </a></li>";
            }
          
            ?>
@@ -106,9 +109,11 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                 case 'login':
                   require_once 'modules/client/login/index.php';
                 break;
-
-                 case 'searchvalue':
+                case 'searchvalue':
                   require_once 'modules/client/login/index.php';
+                break;
+                 case 'profile':
+                  require_once 'modules/client/profile/profile.php';
                 break;
                 case 'places':
                     if($place != '' ){

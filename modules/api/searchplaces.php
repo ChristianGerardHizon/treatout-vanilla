@@ -6,9 +6,6 @@
 
 	$output = array();
 
-	if( !empty($_GET['searchvalue']) && !empty($_GET['minrate']) && !empty($_GET['maxrate']) ) {
-
-
 		$place = $place->search($_GET['searchvalue'], $_GET['minrate'], $_GET['maxrate']);
 
 		if($place) {
@@ -23,20 +20,11 @@
 
 			array_push($output, array(
 
-				'data' => "No results find." 
+				'data' => "No results found." 
 
 			));
 		}
 
-	} else {
-
-			array_push($output, array(
-
-				'data' => "Please try again." 
-
-			));
-		
-	}
 
 
 	echo json_encode($output);

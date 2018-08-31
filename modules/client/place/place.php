@@ -42,6 +42,28 @@ $name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
             </span>
             <br/>
         </div>
+
+          <div class="inner">
+            <div class="content">
+            <h2> Tags</h2>
+
+                <?php 
+
+                    $tags = $places->getTags($_GET['place']); 
+
+                    if(count($tags)) {
+
+                        foreach ($tags as $value) {
+                            echo "<li>$value->tag_name </li>";
+                        }
+                    }
+
+
+                ?>
+            
+            <br/>
+        </div>
+    </div>
     </div>
 </div>
 

@@ -31,13 +31,13 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
     <script src="index.js"></script>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
 </head>
 <body>
 
     <!-- Header -->
     <header id="header">
-        <a class="logo" href="index.php">Treatout</a>
+        <a class="logo" href="../index.php">Treatout</a>
 
         <?php 
 
