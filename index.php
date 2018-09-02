@@ -72,6 +72,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                          <li> <a href='index.php?mod=places&service=restaurant'>Restaurant</a> </li> 
                           <li> <a href='logout.php'>Logout</a> </li>";
                 }
+
             ?>
             <?php
                 if(!isset($_SESSION['login'])) {

@@ -7,7 +7,8 @@ var googledirectionsService;
 
 function getAllUrlParams() {
   const search = new URLSearchParams(window.location.search);
-  return search.get("place");
+  console.log('PLACE',search.get('place'))
+  return search.get("place")
 }
 
 function docid(name) {
@@ -91,6 +92,7 @@ function getLocation() {
 
 
 function getData(uri) {
+  console.log("URI", uri)
   console.log(uri);
   const params = {
     headers: {
@@ -113,4 +115,36 @@ document.addEventListener("DOMContentLoaded", function(event) {
   getData(
     `${CORS_FIX}https://maps.googleapis.com/maps/api/place/details/json?placeid=${getAllUrlParams()}&key=AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k`
   );
+  getReviews(getAllUrlParams())
 });
+
+function getReviews( id ) {
+  let uri = `${CORS_FIX}https://treatout.000webhostapp.com/modules/api/getcommentsandrate.php?placeid=${id}`
+  console.log("URI", uri)
+  console.log(uri);
+  const params = {
+    headers: {
+      "Content-type": "application/json"
+    },
+    dataType: "text",
+    crossdomain: true
+  };
+  axios
+  .get(uri, params)
+  .then(function(response) {
+    console.log(response)
+    response.data.map( review => {
+      docid("reviews").innerHTML += `
+      <span>
+        <h3 style="display:inline;"> <b>${review.username}</b></h3> - <i>${formatRating(review.rate)}</i>
+        <br/>
+        <br/>
+        <blockquote>${review.comment}</blockquote>
+      </span>
+      <br/>
+      <br/>
+      `;  
+    })
+  })
+  .catch(e => console.error(e.message));
+}
