@@ -3,8 +3,7 @@ $module = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
 $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 
 
-$name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
-// echo $module
+$name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : ''; 
 ?>
 <link rel="stylesheet" type="text/css" href="modules/client/place/place.css">
 
@@ -57,7 +56,6 @@ $name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
                             echo "<li>$value->tag_name </li>";
                         }
                     }
-
 
                 ?>
             
