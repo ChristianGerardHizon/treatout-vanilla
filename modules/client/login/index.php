@@ -22,7 +22,7 @@
 
 
 <script type="text/javascript">
-        $(document).ready(function(){
+$(document).ready(function(){
   $(document).on('submit', '#login', function(event) {
     event.preventDefault();
       $.ajax({

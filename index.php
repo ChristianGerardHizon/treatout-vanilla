@@ -6,7 +6,10 @@ include 'library/config.php';
 include 'classes/transportation.php';
 include 'classes/places.php';
 include 'classes/user.php';
+include 'classes/comments.php';
 
+
+$comments = new Comments($connection);
 $places = new Places($connection);
 $transportation = new Transportation($connection);
 $users = new User($connection);

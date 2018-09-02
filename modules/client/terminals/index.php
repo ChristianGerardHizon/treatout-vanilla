@@ -37,7 +37,10 @@ function initialize() {
 
   var infoWindow = new google.maps.InfoWindow;
 
-  downloadUrl('modules/client/terminals/map_data.php?placeid=<?php echo $_GET['place_id']; ?>', function(data){
+
+  var 
+
+  downloadUrl("modules/client/terminals/map_data.php?placeid=<?php echo $_GET['place_id']; ?>", function(data){
           var xml = data.responseXML;
 
           var markers = xml.documentElement.getElementsByTagName('marker');
@@ -74,7 +77,8 @@ function initialize() {
           });
   })
 
-        function downloadUrl(url, callback) {
+
+      function downloadUrl(url, callback) {
         var request = window.ActiveXObject ?
             new ActiveXObject('Microsoft.XMLHTTP') :
             new XMLHttpRequest;
@@ -86,7 +90,7 @@ function initialize() {
           }
         };
 
-        request.open('GET', url, true);
+        request.open('GET', uri, true);
         request.send(null);
       }
 
