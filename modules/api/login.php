@@ -18,8 +18,9 @@
 
 			'name' => $_SESSION['name'],
 
-			'email' => $_SESSION['email']
+			'email' => $_SESSION['email'],
 
+			'userid' => $_SESSION['id']
 		));
 
 
