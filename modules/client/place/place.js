@@ -7,7 +7,8 @@ var googledirectionsService;
 
 function getAllUrlParams() {
   const search = new URLSearchParams(window.location.search);
-  return search.get("place");
+  console.log('PLACE',search.get('place'))
+  return search.get("place")
 }
 
 function docid(name) {
@@ -91,6 +92,7 @@ function getLocation() {
 
 
 function getData(uri) {
+  console.log("URI", uri)
   console.log(uri);
   const params = {
     headers: {

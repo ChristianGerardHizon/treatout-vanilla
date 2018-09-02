@@ -41,9 +41,7 @@ $name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
             </span>
             <br/>
         </div>
-
-          <div class="inner">
-            <div class="content">
+        <div class="content">
             <h2> Tags</h2>
 
                 <?php 
@@ -61,7 +59,6 @@ $name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
             
             <br/>
         </div>
-    </div>
     </div>
 </div>
 
