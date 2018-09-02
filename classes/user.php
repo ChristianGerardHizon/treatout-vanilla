@@ -57,6 +57,30 @@ class User {
     }
 
 
+    public function getuser($id)
+    {
+
+        $q = $this->connection->prepare('SELECT * FROM users WHERE id = ?');
+
+        $q->execute([$id]);
+
+        $count = $q->rowCount();
+
+
+        if($count == 0) {
+
+            return false;
+
+        } else {
+
+
+          return $data = $q->fetchAll(PDO::FETCH_OBJ);
+
+        }
+
+    }
+
+
     public function adminlogin($email, $password) {
 
         session_start();

@@ -109,24 +109,3 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </body>
 </html>
 
-<script type="text/javascript">
-  
-  $(document).on('submit', '#terminal_form', function(event) {
-    event.preventDefault();
-      $.ajax({
-        url:"modules/terminals/insert.php",
-        method:'POST',
-        data:new FormData(this),
-        contentType:false,
-        processData:false,
-        dataType: 'JSON',
-        success:function(data)
-        {
-          alert(data.msg)
-        }
-      });
-  });
-
-
-
-</script>

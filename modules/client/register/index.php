@@ -1,10 +1,23 @@
+<div class="logincontainer" >
+    <section>
+        <div class="loginform">
+          <header>
+            <h3>Register</h3>
+          </header>
  <form method="POST" id="register">
-	<input type="text" name="name" placeholder="full name" required>
-	<input type="text" name="email" placeholder="email" required>
-	<input type="password" name="password" placeholder="password" required>
-	<input type="password" name="confirmpassword" placeholder="confirm password" required>
-	<input type="submit">
+  <input type="text" name="name" placeholder="full name" required>
+  <br>
+  <input type="text" name="email" placeholder="email" required>
+  <br>
+  <input type="password" name="password" placeholder="password" required>
+  <br>
+  <input type="password" name="confirmpassword" placeholder="confirm password" required>
+  <br>
+  <input type="submit">
 </form>
+        </div>
+  </section>
+</div>
 
 <script type="text/javascript">
 	

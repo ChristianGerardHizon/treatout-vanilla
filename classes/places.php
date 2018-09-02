@@ -23,14 +23,44 @@ class Places {
 
     public function search($searchvalue, $minrate, $maxrate) {
 
-        $query = "SELECT * FROM place_tags pt INNER JOIN places p ON pt.place_id = p.place_id  WHERE pt.tag_name LIKE ? OR p.rate_min < ? OR p.rate_max < ? ;";
+
+        if($searchvalue) {
+
+            $query = "SELECT * FROM place_tags pt INNER JOIN places p ON pt.place_id = p.place_id  WHERE pt.tag_name = ? ;";
+
+            $query = $this->connection->prepare($query);
+
+            $query->execute([$searchvalue]);
+
+            return $data =  $query->fetchAll(PDO::FETCH_OBJ);
+
+        } else {
+
+            $query = "SELECT * FROM places WHERE rate_max <= ? ;";
+
+            $query = $this->connection->prepare($query);
+
+            $query->execute([$maxrate]);
+
+            return $data =  $query->fetchAll(PDO::FETCH_OBJ);
+
+
+        } 
+       
+        
+    }
+
+
+    public function getTags($id) {
+
+        $query = "SELECT DISTINCT(tag_name) FROM place_tags WHERE place_id = ?";
 
         $query = $this->connection->prepare($query);
 
-        $query->execute([$searchvalue, $minrate, $maxrate]);
+        $query->execute([$id]);
 
         return $data =  $query->fetchAll(PDO::FETCH_OBJ);
-        
+
     }
 
 

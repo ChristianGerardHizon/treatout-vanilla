@@ -56,8 +56,9 @@ $placename = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
             <br/>
             </div>
         </div>
-<div class="inner">
-            <div class="content">
+
+    <div class="inner">
+        <div class="content">
             <h2> Reviews</h2>
 
             <span id="reviews">
@@ -65,6 +66,32 @@ $placename = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
             <br/>
         </div>
     </div>
+
+
+    <div class="inner">
+                <div class="content">
+            <h2> Tags</h2>
+
+                <?php 
+
+                    $tags = $places->getTags($_GET['place']); 
+
+                    if(count($tags)) {
+
+                        foreach ($tags as $value) {
+                            echo "<li>$value->tag_name </li>";
+                        }
+                    }
+
+
+                ?>
+            
+            <br/>
+        </div>
+    </div>
+
+    
+    
 </div>
 
 <div id="detailsModal" class="modal">
@@ -252,7 +279,7 @@ $(document).on('submit', '#tagform', function(event){
                     success:function(data)
                     {
                         alert(data.msg);
-                        $('#tagForm')[0].reset();
+                        $('#tagform')[0].reset();
                          modal.style.display = "none";
                          location.reload();
                     }

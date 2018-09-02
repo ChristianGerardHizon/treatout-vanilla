@@ -8,7 +8,7 @@ $parnode = $dom->appendChild($node);
 
 $terminals = new Terminals($connection);
 
-$list = $terminals->getTerminalsByPlaceId($_GET['placeid']);
+$list = $terminals->getTerminals($_GET['placeid']);
 
 header("Content-type: text/xml");
 

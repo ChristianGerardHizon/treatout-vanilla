@@ -6,7 +6,7 @@
 
 	$output = array();
 
-		$place = $place->search($_GET['searchvalue'], $_GET['minrate'], $_GET['maxrate']);
+		$place = $place->show($_GET['placeid']);
 
 		if($place) {
 

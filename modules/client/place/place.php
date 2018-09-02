@@ -3,8 +3,7 @@ $module = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
 $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 
 
-$name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
-// echo $module
+$name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : ''; 
 ?>
 <link rel="stylesheet" type="text/css" href="modules/client/place/place.css">
 
@@ -42,6 +41,27 @@ $name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
             </span>
             <br/>
         </div>
+
+          <div class="inner">
+            <div class="content">
+            <h2> Tags</h2>
+
+                <?php 
+
+                    $tags = $places->getTags($_GET['place']); 
+
+                    if(count($tags)) {
+
+                        foreach ($tags as $value) {
+                            echo "<li>$value->tag_name </li>";
+                        }
+                    }
+
+                ?>
+            
+            <br/>
+        </div>
+    </div>
     </div>
 </div>
 
