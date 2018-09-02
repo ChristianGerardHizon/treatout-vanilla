@@ -22,7 +22,7 @@ $name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
                 <li id="avail"></li>
             </ul>
 
-            <a href="index.php?mod=terminal&place_id=<?php echo $place; ?>&name=<?php echo $name; ?>" class="button primary icon fa-map">Find terminal</a>
+            <a href="index.php?mod=terminal&place_id=<?php echo $place; ?>&name=<?php echo $name; ?>" class="button primary icon fa-map">Public Transportation Routes</a>
             </div>
         </div>
         <div class="inner">

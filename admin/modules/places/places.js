@@ -86,9 +86,11 @@ function getGmapData(url) {
     console.log(response);
     const container = document.getElementById("placeLists");
     results.map(function(place) {
+      let name = escape(place.name)
+      let id = escape(place.place_id)
       container.innerHTML += 
       `<section>
-        <div class="content card" onclick="goToPage('index.php?mod=places&place=${place.place_id}&name=${place.name}')">
+        <div class="content card" onclick="goToPage('${id}','${name}')">
           <header>
             <h3>${place.name}</h3>
           </header>
@@ -106,8 +108,8 @@ function getGmapData(url) {
   });
 }
 
-function goToPage( str ) {
-  location = str 
+function goToPage( id,name) {
+ location = `index.php?mod=places&place=${id}&name=${name}` 
 }
 
 function view(query, place, nextpage ) {

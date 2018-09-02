@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 function getReviews( id ) {
-  let uri = `${CORS_FIX}https://treatout.000webhostapp.com/modules/api/getcommentsandrate.php?placeid=${id}`
+  let uri = `https://treatout.000webhostapp.com/modules/api/getcommentsandrate.php?placeid=${id}`
   console.log("URI", uri)
   console.log(uri);
   const params = {

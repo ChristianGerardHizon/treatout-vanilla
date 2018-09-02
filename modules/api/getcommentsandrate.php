@@ -15,18 +15,34 @@
 
 		$rate = $comments->getrate($value->id, $_GET['placeid']);
 
-		foreach ($rate as $ratevalue) {
-			
-			$data[$x++] = [
-				'place_id' => $_GET['placeid'],
-				'comment' => $value->comment,
-				'username' => $value->name,
-				'rate' => (int)$ratevalue->rate,
-				'date' => $value->date = date("F j, Y, g:i a")
+		if(count($rate)) {
 
-			];
+			foreach ($rate as $ratevalue) {
+				
+				$data[$x++] = [
+					'place_id' => $_GET['placeid'],
+					'comment' => $value->comment,
+					'username' => $value->name,
+					'rate' => (int)$ratevalue->rate,
+					'date' => $value->date = date("F j, Y, g:i a")
+
+				];
+
+			}
+
+		} else {
+
+			$data[$x++] = [
+					'place_id' => $_GET['placeid'],
+					'comment' => $value->comment,
+					'username' => $value->name,
+					'rate' => 0,
+					'date' => $value->date = date("F j, Y, g:i a")
+
+				];
 
 		}
+	
 		
 
 	}

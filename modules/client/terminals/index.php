@@ -10,7 +10,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k&sensor=false"> </script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
 
 
 <script type="text/javascript"> 
@@ -37,10 +37,7 @@ function initialize() {
 
   var infoWindow = new google.maps.InfoWindow;
 
-
-  var 
-
-  downloadUrl("modules/client/terminals/map_data.php?placeid=<?php echo $_GET['place_id']; ?>", function(data){
+  downloadUrl('modules/client/terminals/map_data.php?placeid=<?php echo $_GET['place_id']; ?>', function(data){
           var xml = data.responseXML;
 
           var markers = xml.documentElement.getElementsByTagName('marker');
@@ -77,8 +74,7 @@ function initialize() {
           });
   })
 
-
-      function downloadUrl(url, callback) {
+        function downloadUrl(url, callback) {
         var request = window.ActiveXObject ?
             new ActiveXObject('Microsoft.XMLHTTP') :
             new XMLHttpRequest;
@@ -90,7 +86,7 @@ function initialize() {
           }
         };
 
-        request.open('GET', uri, true);
+        request.open('GET', url, true);
         request.send(null);
       }
 
@@ -112,4 +108,3 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 </body>
 </html>
-
