@@ -18,7 +18,8 @@
 
   var map;
   var marker;
-  var myLatlng = new google.maps.LatLng(10.6840,122.9563);
+  var placeLatLng = new google.maps.LatLng(10.6840,122.9563);
+  var myLatlng = new google.maps.LatLng(<?php echo $_GET['lat'].','.$_GET['lng']?>);
   var geocoder = new google.maps.Geocoder();
 
 function initialize() {
@@ -37,13 +38,35 @@ function initialize() {
     draggable: true
   });
 
+    placemarker = new google.maps.Marker({
+    map: map,
+    position: placeLatLng,
+    label: `P`,
+  });
+
+var placename = document.createElement('placename');
+placename.textContent = `<?php echo $_GET['name']; ?>`
+var placeNameInfoContent = document.createElement('divtwo');
+
+var placeNameWindow = new google.maps.InfoWindow;
+
+placeNameInfoContent.appendChild(placename);
+
+placemarker.addListener('click', function() {
+  placeNameWindow.setContent(placeNameInfoContent);
+  placeNameWindow.open(map, placemarker);
+});
+
+
   var infoWindow = new google.maps.InfoWindow;
 
   downloadUrl('modules/terminals/map_data.php?placeid=<?php echo $_GET['place_id']; ?>', function(data){
           var xml = data.responseXML;
 
           var markers = xml.documentElement.getElementsByTagName('marker');
+
           Array.prototype.forEach.call(markers, function(markerElem) {
+            
             var transportation = markerElem.getAttribute('transportation');
             var minfare = markerElem.getAttribute('minfare');
             var maxfare = markerElem.getAttribute('maxfare');
@@ -140,7 +163,7 @@ include 'function.php';
     if($value)
   ?>
     <option value="<?php echo $value->trans_id;?>">
-    <?php echo $value->name;?>
+    <?php echo $value->trans_name;?>
     </option>
   <?php
   }

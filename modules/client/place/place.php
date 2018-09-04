@@ -20,9 +20,10 @@ $name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
                     echo $value->rate_min." - ".$value->rate_max;
                 } ?>  </li>
                 <li id="avail"></li>
+
             </ul>
 
-            <a href="index.php?mod=terminal&place_id=<?php echo $place; ?>&name=<?php echo $name; ?>" class="button primary icon fa-map">Public Transportation Routes</a>
+            <a id="url" class="button primary icon fa-map">Public Transportation Routes</a>
             </div>
         </div>
         <div class="inner">
