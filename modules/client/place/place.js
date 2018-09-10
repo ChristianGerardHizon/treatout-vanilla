@@ -56,6 +56,7 @@ function setDetails() {
   docid("rating").innerHTML = formatRating(place.rating);
   docid("phoneNum").innerHTML = place.international_phone_number;
   docid("avail").innerHTML = place.opening_hours.open_now ? "OPEN" : "CLOSED";
+  docid("url").href = `index.php?mod=terminal&place_id=${place.place_id}&name=${place.name}&lng=${place.geometry.location.lng}&lat=${place.geometry.location.lat}`;
   formatImages();
   formatReviews();
 }
@@ -119,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 function getReviews( id ) {
-  let uri = `${CORS_FIX}https://treatout.000webhostapp.com/modules/api/getcommentsandrate.php?placeid=${id}`
+  let uri = `https://treatout.000webhostapp.com/modules/api/getcommentsandrate.php?placeid=${id}`
   console.log("URI", uri)
   console.log(uri);
   const params = {

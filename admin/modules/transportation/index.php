@@ -21,7 +21,7 @@ echo "
 		<section>
 		    <div class='content card'>
 		      <header>
-		        <h3>$value->name</h3>
+		        <h3>$value->trans_name</h3>
 		      </header>
 		
 		      <p>$value->description</p>

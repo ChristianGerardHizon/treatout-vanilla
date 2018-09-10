@@ -10,13 +10,13 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWJ95wDORvWwB6B8kNzSNDfVSOeQc8W7k&sensor=false"> </script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
 
 
 <script type="text/javascript"> 
 
 
-  var myLatlng = new google.maps.LatLng(10.6840,122.9563);
+var myLatlng = new google.maps.LatLng(<?php echo $_GET['lat'].','.$_GET['lng']?>);
 
 
 function initialize() {
@@ -31,42 +31,71 @@ function initialize() {
 
   marker = new google.maps.Marker({
     map: map,
-    //position: myLatlng,
-    draggable: true
+    position: myLatlng,
+    label: `P`,
   });
+
+var placename = document.createElement('placename');
+placename.textContent = `<?php echo $_GET['name']; ?>`
+var placeNameInfoContent = document.createElement('divtwo');
+
+var verystrong = document.createElement('verystrong');
+verystrong.textContent = placename;
+var placeNameWindow = new google.maps.InfoWindow;
+
+placeNameInfoContent.appendChild(placename);
+
+marker.addListener('click', function() {
+  placeNameWindow.setContent(placeNameInfoContent);
+  placeNameWindow.open(map, marker);
+});
+
+
 
   var infoWindow = new google.maps.InfoWindow;
 
   downloadUrl('modules/client/terminals/map_data.php?placeid=<?php echo $_GET['place_id']; ?>', function(data){
+    
           var xml = data.responseXML;
 
           var markers = xml.documentElement.getElementsByTagName('marker');
+
+
           Array.prototype.forEach.call(markers, function(markerElem) {
+
             var transportation = markerElem.getAttribute('transportation');
             var minfare = markerElem.getAttribute('minfare');
             var maxfare = markerElem.getAttribute('maxfare');
             var type = markerElem.getAttribute('type');
+
             var point = new google.maps.LatLng(
+
               parseFloat(markerElem.getAttribute('lat')),
-              parseFloat(markerElem.getAttribute('lng')));
+              parseFloat(markerElem.getAttribute('lng'))
+
+            );
 
             var infowincontent = document.createElement('div');
             var strong = document.createElement('strong');
+
             strong.textContent = transportation
+
             infowincontent.appendChild(strong);
             infowincontent.appendChild(document.createElement('br'));
 
             var text = document.createElement('text');
             text.textContent = "Estimated fare rate: Php " + minfare + " - " + maxfare
+
             infowincontent.appendChild(text);
 
-            var image = 'https://static.thenounproject.com/png/331565-200.png';
+
             var terminalMarker = new google.maps.Marker({
               map: map,
               position: point,
               label: 'T',
               draggable: false
             });
+
             terminalMarker.addListener('click', function() {
               infoWindow.setContent(infowincontent);
               infoWindow.open(map, terminalMarker);
@@ -108,4 +137,3 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 </body>
 </html>
-

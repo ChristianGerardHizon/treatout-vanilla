@@ -20,9 +20,10 @@ $name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
                     echo $value->rate_min." - ".$value->rate_max;
                 } ?>  </li>
                 <li id="avail"></li>
+
             </ul>
 
-            <a href="index.php?mod=terminal&place_id=<?php echo $place; ?>&name=<?php echo $name; ?>" class="button primary icon fa-map">Find terminal</a>
+            <a id="url" class="button primary icon fa-map">Public Transportation Routes</a>
             </div>
         </div>
         <div class="inner">
@@ -41,7 +42,7 @@ $name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
             </span>
             <br/>
         </div>
-        <div class="content">
+            <div class="content">
             <h2> Tags</h2>
 
                 <?php 
@@ -59,9 +60,53 @@ $name = (isset($_GET['name']) && $_GET['name'] != '') ? $_GET['name'] : '';
             
             <br/>
         </div>
+
+        <?php
+
+        if(!empty($_SESSION['id']))
+
+        echo "<div class='content'>
+                    <h2> Comment</h2>
+                <form method='POST' id='commentForm'>
+                    <input type='text' name='comment' required>
+                    <br>
+                    <input type='submit' name='submit'>
+                    <input type='hidden' name='placeid' value= '".$_GET['place']."'>
+                    <input type='hidden' name='userid' value= '".$_SESSION['id']."'>
+                </form>
+            </div> ";
+
+        ?>
+
     </div>
 </div>
 
 <script src="modules/client/place/place.js"></script>
-<!-- <div id="right-panel"></div>
-<div id="map"></div> -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(document).on('submit', '#commentForm', function(event) {
+    event.preventDefault();
+      $.ajax({
+        url:"/modules/client/place/addcomment.php",
+        method:'POST',
+        data:new FormData(this),
+        contentType:false,
+        processData:false,
+        dataType: 'JSON',
+        success:function(res)
+        {
+          if(res.msg){
+
+            alert(res.msg)
+            location.reload()
+
+          }else{
+
+              alert("ERROR")
+          }
+        }
+      });
+  });
+});
+</script>

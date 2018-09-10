@@ -20,7 +20,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Treatout </title>
+        <title> TreatOut </title>
         <meta name="viewport" content="initial-scale=1.0">
         <meta charset="utf-8">
         <meta http-equiv="cache-control" content="no-cache">
@@ -35,16 +35,16 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
     </head>
 
     <body>
-		<!-- Header -->
+        <!-- Header -->
         <header id="header">
-            <a class="logo" href="index.php">Treatout</a>
+            <a class="logo" href="index.php">TreatOut</a>
 
             <nav>
                 <a href="#menu">Menu</a>
             </nav>
         </header>
 
-		<!-- Nav -->
+        <!-- Nav -->
         <nav id="menu">
             <ul class="links">
 
@@ -65,11 +65,11 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
 
             <?php 
                 if(isset($_SESSION['login'])) {
-                    echo "<li> <a href='index.php?mod=places&service=tourist+spot'>Tourist Spots</a> </li>
+                    echo "<li> <a href='index.php?mod=search'>Search</a> </li>
+                        <li> <a href='index.php?mod=places&service=tourist+spot'>Tourist Spots</a> </li>
                          <li> <a href='index.php?mod=places&service=restaurant'>Restaurant</a> </li> 
                           <li> <a href='logout.php'>Logout</a> </li>";
                 }
-
             ?>
             <?php
                 if(!isset($_SESSION['login'])) {
