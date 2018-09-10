@@ -7,38 +7,17 @@
  <form method="POST" id="register">
   <input type="text" name="name" placeholder="full name" required>
   <br>
-  <input type="text" name="email" placeholder="email" required>
+  <input type="email" name="email" placeholder="email" required>
   <br>
-  <input type="password" name="password" placeholder="password" required>
+  <input id="password" type="password" name="password" placeholder="password" required>
   <br>
-  <input type="password" name="confirmpassword" placeholder="confirm password" required>
+  <input id="confirmPassword" type="password" name="confirmpassword" placeholder="confirm password" required>
   <br>
+  <div class="g-recaptcha" data-sitekey="6LfcT28UAAAAANGMbzeJO6Wi4cO0ID8SSukQ881K" data-callback="captchaCallback"></div>
+  <br/>
   <input type="submit">
 </form>
         </div>
   </section>
 </div>
-
-<script type="text/javascript">
-	
-	$(document).on('submit', '#register', function(event) {
-    event.preventDefault();
-      $.ajax({
-        url:"/modules/client/register/register.php",
-        method:'POST',
-        data:new FormData(this),
-        contentType:false,
-        processData:false,
-        dataType :'JSON',
-        success:function(data)
-        {
-          if(data.response) {
-
-            var link = "index.php"
-            window.location.href=link
-
-          }
-        }
-      });
-  });
-</script>
+<script src="modules/client/register/register.js"></script>

@@ -31,7 +31,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
         <script src="index.js"></script>
-
+        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
 
     <body>
@@ -113,6 +113,9 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                 case 'searchvalue':
                   require_once 'modules/client/login/index.php';
                 break;
+                case 'verify':
+                    require_once 'modules/client/profile/profile.php';
+                    break;
                  case 'profile':
                   require_once 'modules/client/profile/profile.php';
                 break;
