@@ -31,7 +31,7 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
         <script src="index.js"></script>
-
+        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
 
     <body>
