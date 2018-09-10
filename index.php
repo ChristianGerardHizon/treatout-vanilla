@@ -113,6 +113,9 @@ $place = (isset($_GET['place']) && $_GET['place'] != '') ? $_GET['place'] : '';
                 case 'searchvalue':
                   require_once 'modules/client/login/index.php';
                 break;
+                case 'verify':
+                    require_once 'modules/client/profile/profile.php';
+                    break;
                  case 'profile':
                   require_once 'modules/client/profile/profile.php';
                 break;
